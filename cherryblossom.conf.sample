@@ -1,0 +1,63 @@
+##############################################################################
+### Use the global section to change cherrypy global configuration parameters.
+### See http://www.cherrypy.org/trunk/docs/book/html/index.html#id3396178
+### for more information
+##############################################################################
+[global]
+### cherrypy server.environment - set to "development" for debugging
+server.environment="production"
+
+### Turn profiling on or off, and tell cherrypy where to put the information
+### if it's on. You can use profiler.py (located in cherrypy/lib) to view
+### profiling information on your blog
+profiling.on="false"
+profiling.path="./profile"
+
+### With autoreload on, we initialize the Blox class twice. Not recommended.
+autoreload.on=False
+
+######################################################################
+### The cherryblossom section controls settings for your cherryblossom 
+### installation
+######################################################################
+[cherryblossom]
+### The title of your blog
+blog_title="Blog Title"
+
+### A short description of your blog
+blog_desc="What this blog is"
+
+### the language of your blog, used for your rss feed. For more information on
+### this property, see 
+### http://www.w3.org/TR/REC-html40/struct/dirlang.html#langcodes
+blog_lang="en"
+
+### The name of the blog author
+blog_author="John Doe"
+
+### The email address of the blog author
+blog_email="john.doe@example.com"
+
+### The location of your blog entries. May be a relative or absolute path.
+datadir="./entries"
+
+### The base url of your blog
+base_url="http://localhost:8080/"
+
+### The number of entries to show on the first page of your blog and in your
+### rss feeds
+num_entries=5
+
+### Directories in which cherry blossom shouldn't look for blog entries
+ignore_directories=[".svn"]
+
+### A list of the plugins which cherry blossom should try to load. For example,
+### if you wanted to load the comments, rss and keywords plugins, you would use
+### plugins=["Comments", "Rss", "Keywords"]
+plugins=[]
+
+### The directory in which your plugins live; may be absolute or relative
+plugin_dir="./plugins"
+
+### The format you would like the date to be displayed in on your blog
+date_fmt="%b %d, %Y"
