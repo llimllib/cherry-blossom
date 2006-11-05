@@ -11,8 +11,15 @@ def get_most_recent(datadir, n=None, ignore_directories=(), offset=0):
     """returns the most recent n entries from the datadir"""
     global SORTED_ENTRIES, ENTRIES, LAST_UPDATE
 
-    #XXX: update entries every 30 minutes by default. Better default?
+    #Caching sucks right now! Turned off until I at least have an admin 
+    #interface. Turned back on because it's severely slower on the front page.
+    #
+    #just for reference: on my localhost, removing the cache doubles the page 
+    #build time as reported by cherrypy, but only from .008 to .016 (tested 
+    #on /code.html)
+    #Unfortunately, the front page goes from ~.01 to about .1
     if not ENTRIES or (NOW()-LAST_UPDATE).seconds > 1800:
+    #if 1:
         ENTRIES, SORTED_ENTRIES = {}, {}
         scan_for_entries(datadir, ignore_directories, datadir)
         SORTED_ENTRIES = [entry[1] for entry in
