@@ -10,7 +10,7 @@ commentdir (string): Directory in which to keep/find comments
 """
 
 class CommentStruct:
-    def __init__(self):
+    def __init__(self, parent):
         self.text = ''
         self.url = ''
         self.author = ''

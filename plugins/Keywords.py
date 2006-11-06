@@ -8,16 +8,17 @@ META_RE = re.compile('^<!-- ?([ \w]+): ?([\w ,.:\/-]+)-->')
 
 #TODO: add + for keyword combination support!
 class Keywords:
-    def __init__(self):
+    def __init__(self, parent):
         self.keyword = ''
         self.rss_link = ''
+        self.parent = parent
 
     @cpy.expose
     def default(self, *args, **kargs):
         if len(args) > 1:
-            return cpy.root.error_page("too many arguments to Keywords")
+            return self.parent.error_page("too many arguments to Keywords")
         elif len(args) < 1:
-            return cpy.root.error_page("Too few arguments to Keywords")
+            return self.parent.error_page("Too few arguments to Keywords")
         
         self.keyword = args[0]
         
@@ -25,10 +26,9 @@ class Keywords:
         self.rss_link = config('base_url').rstrip('/') + \
             '/Rss/keyword/' + self.keyword
         
-        #XXX: is it a good idea to assume that root is a BlogRoot?
         entries = get_entries_by_meta('keywords')
         entries = [e for e in entries if self.keyword in e.metadata['keywords']]
-        return cpy.root.render_page(entries)
+        return self.parent.render_page(entries)
 
     def cb_add_data(self):
         if self.rss_link:

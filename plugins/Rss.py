@@ -19,6 +19,9 @@ class EntryStruct:
         self.title = ''
 
 class Rss:
+    def __init__(self, parent):
+        pass
+
     @cpy.expose
     def index(self):
         cpy.response.headerMap['Content-Type'] = "application/xml"

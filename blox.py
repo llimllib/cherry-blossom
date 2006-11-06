@@ -65,14 +65,12 @@ class BlogRoot(object):
         else:
             sys.path.append(plugindir)
 
-        #XXX: Should we just scan for *.py files in the plugin dir? Should the
-        # mechanism to remove a plugin be renaming it or taking it out of 
-        # conf?
+        #XXX: Should we just scan for *.py files in the plugin dir? 
         for p in pluginlist:
             try:
                 mod = __import__(p)
                 if not hasattr(self, p):
-                    instance = getattr(mod, p)()
+                    instance = getattr(mod, p)(self)
                     setattr(self, p, instance)
                     self.plugins.append(instance)
                     cpy.log("successfully imported plugin module %s" % p)
