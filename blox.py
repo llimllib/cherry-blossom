@@ -7,7 +7,6 @@ from utils import config
 
 #TODO: make installer automatically download prereqs - does this happen by
 #       default with easy_install?
-#       sub-TODO: make multiauth into an egg
 #TODO: improve caching. Not sure how though. Ideas?
 #TODO: Admin module - add entries, invalidate cache, allow plugins a callback
 #                       to put info here.
@@ -26,8 +25,6 @@ class BlogRoot(object):
     def __init__(self):
         cpy.config.update(file="cherryblossom.conf")  
 
-        self.months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
-            'sep', 'oct', 'nov', 'dec']
         self.timeformats =  [["%Y", "%d", "%m", "%b", "%B"],
             ["%Y %b", "%Y %m", "%Y %b", "%Y %B", "%m %d", "%b %d", "%B %d"],
             ["%Y %m %d", "%Y %b %d", "%Y %B %d"]]
