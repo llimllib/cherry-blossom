@@ -13,7 +13,11 @@ server.environment="production"
 profiling.on="false"
 profiling.path="./profile"
 
-### With autoreload on, we initialize the Blox class twice. Not recommended.
+### turn autoreload on during development if you want the cherrypy server to
+### automatically restart when you change a cherrypy file. It makes debugging
+### much easier.
+### NOTE: this doesn't work with some older versions of cherrypy. If so, just
+### leave it off.
 autoreload.on=False
 
 ######################################################################

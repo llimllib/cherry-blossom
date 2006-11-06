@@ -54,7 +54,7 @@ def get_one(fname, datadir):
     return ENTRIES.get(fname, None)
 
 def get_entries_by_date(year, month='', day=''):
-    """returns an array of entry objects"""
+    """returns a list of entry objects"""
     cpy.log("date: %s %s %s" % (year, month, day))
     if not month and not day:
         res = [(e.time, e) for e in SORTED_ENTRIES if e.time_tuple[0] == year]
