@@ -64,4 +64,6 @@ plugins=[]
 plugin_dir="./plugins"
 
 ### The format you would like the date to be displayed in on your blog
+### See http://docs.python.org/lib/module-time.html for documentation of the format
+### strings
 date_fmt="%b %d, %Y"
