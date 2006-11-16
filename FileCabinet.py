@@ -71,7 +71,7 @@ def get_entries_by_date(year, month='', day=''):
             if y == year and m == month and d == day:
                 res.append((e.time, e))
     if not res:
-        return self.error_page("No stories found at this date")
+        return None
     return [r[1] for r in res]
 
 def get_entries_by_meta(key):

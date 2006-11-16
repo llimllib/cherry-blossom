@@ -118,7 +118,9 @@ class BlogRoot(object):
             ns['offset'] = offset + ns['num_entries']
 
         #cb_add_data is the plugin's chance to add data to the story template
-        #            it should return a list of
+        #            it should return a dictionary which will be added to the
+        #            template namespace
+        #XXX: should this just be ns.update(dict_)? Test!
         for dict_ in self.run_callback('cb_add_data'):
             for key, val in dict_.iteritems():
                 ns[key] = val
@@ -171,11 +173,14 @@ class BlogRoot(object):
     def default(self, *args):
         z = args[0]
         l = len(args)
-        if l < len(self.timeformats):
+        if l <= len(self.timeformats):
             #check to see if args represent a date
             for fmt in self.timeformats[l-1]:
                 try:
+                    #join the args, and see if the format works
                     t = time.strptime(' '.join(args), fmt)
+
+                    #if it works, split it into year, month, day, if possible
                     if "%Y" in fmt:
                         year = t[0]
                     else:
@@ -189,7 +194,8 @@ class BlogRoot(object):
                     else:
                         day = None
                     entries = FileCabinet.get_entries_by_date(year, month, day)
-                    return self.render_page(entries)
+                    if entries:
+                        return self.render_page(entries)
                 except ValueError:
                     #not a date - move on
                     pass
