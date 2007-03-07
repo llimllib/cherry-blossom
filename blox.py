@@ -5,19 +5,7 @@ import FileCabinet
 from buffet import TemplateFilter
 from utils import config
 
-#TODO: make installer automatically download prereqs - does this happen by
-#       default with easy_install?
-#TODO: improve caching. Not sure how though. Ideas?
-#TODO: Admin module - add entries, invalidate cache, allow plugins a callback
-#                       to put info here.
-#TODO: Documentation. I'm not gonna do it. Anyone game?
-#TODO: Config - Required config elements should be verified at startup (slashes
-#       or no slashes, email must be present & valid, etc)
-#QUESTION: Should the program use the cherrypy filter system instead of its
-#          own? Does this program not fit the "zen of cherrypy"?
 class BlogRoot(object):
-    #TODO: parameterize this (I can't get server.output.filters to work, and
-    #                           we can't reference config here (?))
     _cp_filters = [
         #set type of template and location of template directory
         TemplateFilter('cheetah', 'templates')]
@@ -171,6 +159,11 @@ class BlogRoot(object):
 
     @cpy.expose
     def default(self, *args):
+        #allow a plugin to handle a default url if it wants; it needs to return
+        #Entry objects if it does
+        files = self.run_callback('cb_default')[0]
+        if files != []: return self.render_page(files)
+
         z = args[0]
         l = len(args)
         if l <= len(self.timeformats):
