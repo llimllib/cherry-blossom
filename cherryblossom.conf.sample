@@ -7,6 +7,9 @@
 ### cherrypy server.environment - set to "development" for debugging
 server.environment="production"
 
+### what port to use?
+server.port_socket=4567
+
 ### Turn profiling on or off, and tell cherrypy where to put the information
 ### if it's on. You can use profiler.py (located in cherrypy/lib) to view
 ### profiling information on your blog
@@ -46,7 +49,7 @@ blog_email="john.doe@example.com"
 datadir="./entries"
 
 ### The base url of your blog
-base_url="http://localhost:8080/"
+base_url="http://localhost:4567/"
 
 ### The number of entries to show on the first page of your blog and in your
 ### rss feeds
