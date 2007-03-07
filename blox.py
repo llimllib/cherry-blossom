@@ -79,14 +79,11 @@ class BlogRoot(object):
         for p in self.plugins:
             if hasattr(p, callback):
                 returnval = getattr(p, callback)(*args, **kwargs)
-                if returnval and (len(returnval) == 1
-                    or isinstance(returnval, dict)):
-                    #only one item was returned, just stick it in datums
-                    datums.append(returnval)
-                elif returnval:
-                    #otherwise, we need to insert each item independently
-                    for item in returnval:
-                        datums.append(item)
+                if returnval:
+                    if isinstance(returnval, dict):
+                        datums.append(returnval)
+                    elif isinstance(returnval, list):
+                        datums += returnval
         return datums
 
     def error_page(self, error):
@@ -161,7 +158,7 @@ class BlogRoot(object):
     def default(self, *args):
         #allow a plugin to handle a default url if it wants; it needs to return
         #Entry objects if it does
-        files = self.run_callback('cb_default')[0]
+        files = self.run_callback('cb_default', args)
         if files != []: return self.render_page(files)
 
         z = args[0]
