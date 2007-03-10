@@ -3,9 +3,7 @@ body {
 	padding: 0;
 	border: 0;
 	text-align: center;
-    /*text color*/
-	color: black;
-    /* outside bg color */
+	color:#000000;
 	background-color: #ACB5B4;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 100.01%;
@@ -42,7 +40,6 @@ a:hover{
 	border: thin none #FF0000;
 	float: left;
 	width: 550px;
-    background-color: white;
 }
 #main h1 {
 	text-transform:uppercase;
@@ -104,7 +101,7 @@ a:hover{
 }
 .sideheader {
 	background-color: #02486C;
-	color: red; #FFFFFF;
+	color: #FFFFFF;
 	font-size:15px;
 	margin-top:10px;
 	padding-top: 3px;

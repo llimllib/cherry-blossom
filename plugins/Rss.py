@@ -9,7 +9,7 @@ from utils import config
 HTML_RE = re.compile('(<.*?>)', re.DOTALL)
 PARTIAL_HTML_RE = re.compile('(<[^>]$)', re.DOTALL)
 
-class EntryStruct:
+class EntryStruct(object):
     def __init__(self):
         self.desc = ''
         self.link = ''
@@ -18,7 +18,7 @@ class EntryStruct:
         self.time = ''
         self.title = ''
 
-class Rss:
+class Rss(object):
     def __init__(self, parent):
         pass
 

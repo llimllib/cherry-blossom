@@ -7,7 +7,7 @@ from utils import config
 META_RE = re.compile('^<!-- ?([ \w]+): ?([\w ,.:\/-]+)-->')
 
 #TODO: add + for keyword combination support!
-class Keywords:
+class Keywords(object):
     def __init__(self, parent):
         self.keyword = ''
         self.rss_link = ''

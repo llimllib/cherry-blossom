@@ -4,7 +4,7 @@ from datetime import date
 from FileCabinet import get_entries_by_date
 from utils import configMap
 
-class Calendar:
+class Calendar(object):
     def __init__(self, parent):
         self.now = date.today()
         self.monthname = self.now.strftime('%B')

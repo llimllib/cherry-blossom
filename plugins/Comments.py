@@ -9,7 +9,7 @@ CONFIGURATION PARAMETERS:
 commentdir (string): Directory in which to keep/find comments
 """
 
-class CommentStruct:
+class CommentStruct(object):
     def __init__(self):
         self.text = ''
         self.url = ''
@@ -19,7 +19,7 @@ class CommentStruct:
 class CommentError(Exception):
     pass
 
-class Comments:
+class Comments(object):
     def __init__(self, parent):
         commentdir = config('commentdir', None, 'comments')
         if not commentdir:
