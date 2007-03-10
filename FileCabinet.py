@@ -21,7 +21,6 @@ def get_most_recent(datadir, n=None, ignore_directories=(), offset=0):
     if not ENTRIES or (NOW()-LAST_UPDATE).seconds > 1800:
     #if 1:
         ENTRIES, SORTED_ENTRIES = {}, {}
-        print locals()
         scan_for_entries(datadir, ignore_directories, datadir)
         SORTED_ENTRIES = [entry[1] for entry in
                   reversed(sorted([(e.time, e) for e in ENTRIES.itervalues()]))]
