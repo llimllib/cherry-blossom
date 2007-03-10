@@ -66,7 +66,7 @@ class BlogRoot(object):
             try:
                 mod = __import__(p)
                 if not hasattr(self, p):
-                    instance = getattr(mod, p)()
+                    instance = getattr(mod, p)(self)
                     setattr(self, p, instance)
                     self.plugins.append(instance)
                     cpy.log("successfully imported plugin module %s" % p)
@@ -147,9 +147,14 @@ class BlogRoot(object):
 
     @cpy.expose
     def default(self, *args):
+        #allow a plugin to handle a default url if it wants; it needs to return 
+        #Entry objects if it does 
+        files = self.run_callback('cb_default', args) 
+        if files != []: return self.render_page(files)
+
         z = args[0]
         l = len(args)
-        if l < len(self.timeformats):
+        if l <= len(self.timeformats):
             #check to see if args represent a date
             for fmt in self.timeformats[l-1]:
                 try:
@@ -167,7 +172,8 @@ class BlogRoot(object):
                     else:
                         day = None
                     entries = FileCabinet.get_entries_by_date(year, month, day)
-                    return self.render_page(entries)
+                    if entries:
+                        return self.render_page(entries)
                 except ValueError:
                     #not a date - move on
                     pass
