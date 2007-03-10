@@ -24,9 +24,7 @@ class Rss:
 
     @cpy.expose
     def index(self):
-        cpy.response.headerMap['Content-Type'] = "application/xml"
-        #XXX: should we sanitize config file entries, or assume users are
-        #      smart enough not to include (or to escape) < and > and &?
+        cpy.tools.response_headers.headers = [('Content-Type', "application/xml")]
         datadir = config('datadir')
         num_entries = config('num_entries', 10)
         entries = get_most_recent(datadir, num_entries)
@@ -39,7 +37,7 @@ class Rss:
         else: return self.index()
 
     def keyword_rss(self, kw):
-        cpy.response.headerMap['Content-Type'] = "application/xml"
+        cpy.tools.response_headers.headers = [('Content-Type', "application/xml")]
         num_entries = config('num_entries', 10)
         entries = get_entries_by_meta('keywords')
         entries = [e for e in entries if kw in e.metadata['keywords']]
