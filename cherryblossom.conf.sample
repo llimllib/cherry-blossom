@@ -1,33 +1,4 @@
-##############################################################################
-### Use the global section to change cherrypy global configuration parameters.
-### See http://www.cherrypy.org/trunk/docs/book/html/index.html#id3396178
-### for more information
-##############################################################################
-[global]
-### cherrypy server.environment - set to "development" for debugging
-server.environment="production"
-
-### what port to use?
-server.port_socket=4567
-
-### Turn profiling on or off, and tell cherrypy where to put the information
-### if it's on. You can use profiler.py (located in cherrypy/lib) to view
-### profiling information on your blog
-profiling.on="false"
-profiling.path="./profile"
-
-### turn autoreload on during development if you want the cherrypy server to
-### automatically restart when you change a cherrypy file. It makes debugging
-### much easier.
-### NOTE: this doesn't work with some older versions of cherrypy. If so, just
-### leave it off.
-autoreload.on=False
-
-######################################################################
-### The cherryblossom section controls settings for your cherryblossom 
-### installation
-######################################################################
-[cherryblossom]
+[/]
 ### The title of your blog
 blog_title="Blog Title"
 
@@ -70,3 +41,15 @@ plugin_dir="./plugins"
 ### See http://docs.python.org/lib/module-time.html for documentation of the format
 ### strings
 date_fmt="%b %d, %Y"
+
+### template_engine is the name of the templating engine you're using
+template_engine = "cheetah"
+
+### template_dir is the directory in which your template files reside
+template_dir = "./templates"
+
+### This directive creates a static directory at base_url/static; to turn this off,
+### simply change True to False or comment out that line
+[/static]
+tools.staticdir.on = True
+tools.staticdir.dir = "static"
