@@ -149,7 +149,7 @@ class BlogRoot(object):
     def default(self, *args):
         #allow a plugin to handle a default url if it wants; it needs to return 
         #Entry objects if it does 
-        files = run_callback('cb_default', args) 
+        files = run_callback(self.plugins, 'cb_default', args) 
         if files != []: return self.render_page(files)
 
         z = args[0]

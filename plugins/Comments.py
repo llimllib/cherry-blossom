@@ -10,7 +10,7 @@ commentdir (string): Directory in which to keep/find comments
 """
 
 class CommentStruct:
-    def __init__(self, parent):
+    def __init__(self):
         self.text = ''
         self.url = ''
         self.author = ''
@@ -20,7 +20,7 @@ class CommentError(Exception):
     pass
 
 class Comments:
-    def __init__(self):
+    def __init__(self, parent):
         commentdir = config('commentdir', None, 'comments')
         if not commentdir:
             raise CommentError, "Commentdir not found in config file"
