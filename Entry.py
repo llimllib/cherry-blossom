@@ -1,5 +1,6 @@
 import os, time, re
 import cherrypy as cpy
+from utils import config
 
 #find meta info in entries
 META_RE = re.compile(r'^<!-- ?([ \w]+): ?([\w ,.:\+\/-]+)-->')
@@ -11,7 +12,7 @@ class Entry(object):
         self.filename = filename
         self.relpath, self.ext = os.path.splitext(filename.split(datadir)[-1])
         self.relpath = self.relpath.strip('\/')
-        self.datefmt = cpy.config.get('date_fmt', '%b %d, %Y')
+        self.datefmt = config('date_fmt', '%b %d, %Y')
         self._text = '' #will store the text of the file
 
         #when this is set to 1, the entry will reload from its source file

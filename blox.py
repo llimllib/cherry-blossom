@@ -2,21 +2,27 @@
 import datetime, time, os, sys, traceback
 import cherrypy as cpy
 import FileCabinet
-from buffet import TemplateFilter
-from utils import config
+from buffet import BuffetTool
+from utils import config, run_callback
 
 class BlogRoot(object):
-    _cp_filters = [
-        #set type of template and location of template directory
-        TemplateFilter('cheetah', 'templates')]
+    _cp_config = {"tools.buffet.on": True,
+                  "tools.staticdir.root": os.path.abspath(os.curdir)}
 
     def __init__(self):
-        cpy.config.update(file="cherryblossom.conf")  
-
+        self.months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
+            'sep', 'oct', 'nov', 'dec']
         self.timeformats =  [["%Y", "%d", "%m", "%b", "%B"],
             ["%Y %b", "%Y %m", "%Y %b", "%Y %B", "%m %d", "%b %d", "%B %d"],
             ["%Y %m %d", "%Y %b %d", "%Y %B %d"]]
         self.plugins = [] #contains all loaded plugins
+
+        #turn on the templating engine
+        cpy.tools.buffet = BuffetTool(config("template_engine"),
+                                      config("template_dir"))
+
+        #and make the static root into the cd
+
 
         self.now = datetime.datetime.now
         self.last_update = self.now()
@@ -53,12 +59,14 @@ class BlogRoot(object):
         else:
             sys.path.append(plugindir)
 
-        #XXX: Should we just scan for *.py files in the plugin dir? 
+        #XXX: Should we just scan for *.py files in the plugin dir? Should the
+        # mechanism to remove a plugin be renaming it or taking it out of 
+        # conf?
         for p in pluginlist:
             try:
                 mod = __import__(p)
                 if not hasattr(self, p):
-                    instance = getattr(mod, p)(self)
+                    instance = getattr(mod, p)()
                     setattr(self, p, instance)
                     self.plugins.append(instance)
                     cpy.log("successfully imported plugin module %s" % p)
@@ -71,23 +79,8 @@ class BlogRoot(object):
                 cpy.log("%s" % sys.exc_info()[0])
                 cpy.log("%s" % traceback.format_exc())
 
-    def run_callback(self, callback, *args, **kwargs):
-        """run a callback and return all templates"""
-        #this array just collects whatever data the plugins return and returns
-        #it to the caller
-        datums = []
-        for p in self.plugins:
-            if hasattr(p, callback):
-                returnval = getattr(p, callback)(*args, **kwargs)
-                if returnval:
-                    if isinstance(returnval, dict):
-                        datums.append(returnval)
-                    elif isinstance(returnval, list):
-                        datums += returnval
-        return datums
-
     def error_page(self, error):
-        ns = cpy.config.configMap['cherryblossom']
+        ns = cpy.config.get('/')
         ns.update({'error': error})
         return (('head', ns), ('error', ns), ('foot', ns))
 
@@ -95,7 +88,7 @@ class BlogRoot(object):
         """renders a collection of entries into a web page"""
         page = []
         #namespace for the template substitution (starts with config opts)
-        ns = cpy.config.configMap['cherryblossom'].copy()
+        ns = cpy.config.get('/')
 
         #in order to make an offset url, we need
         #$base_url/$currentModule(s)?offset=$offset&othervars=$othervars
@@ -103,10 +96,8 @@ class BlogRoot(object):
             ns['offset'] = offset + ns['num_entries']
 
         #cb_add_data is the plugin's chance to add data to the story template
-        #            it should return a dictionary which will be added to the
-        #            template namespace
-        #XXX: should this just be ns.update(dict_)? Test!
-        for dict_ in self.run_callback('cb_add_data'):
+        #            it should return a list of
+        for dict_ in run_callback(self.plugins, 'cb_add_data'):
             for key, val in dict_.iteritems():
                 ns[key] = val
 
@@ -122,12 +113,12 @@ class BlogRoot(object):
         #               inserted there. It must return one or more template 
         #               tuples. A template tuple consists of
         #               (template, data_dictionary) which is (string, dict)
-        page.extend(self.run_callback('cb_story_start', entries))
+        page.extend(run_callback(self.plugins, 'cb_story_start', entries))
 
         for e in entries:
             #cb_story lets a plugin insert variables just for one particular
             #         entry. It is given the story object, and may modify it.
-            self.run_callback('cb_story', e)
+            run_callback(self.plugins, 'cb_story', e)
 
             #append all story variables that do not start with "_"
             storyns = ns.copy()
@@ -139,11 +130,11 @@ class BlogRoot(object):
         #cb_story_end is a plugin's chance to put text between all stories
         #               and the footer, similar to cb_story_start. It must
         #               return a template tuple.
-        page.extend(self.run_callback('cb_story_end', entries))
+        page.extend(run_callback(self.plugins, 'cb_story_end', entries))
         page.append(('foot', ns))
 
         #cb_page_end is a plugin's chance to clean up data
-        self.run_callback('cb_page_end')
+        run_callback(self.plugins, 'cb_page_end')
 
         return page
 
@@ -156,21 +147,13 @@ class BlogRoot(object):
 
     @cpy.expose
     def default(self, *args):
-        #allow a plugin to handle a default url if it wants; it needs to return
-        #Entry objects if it does
-        files = self.run_callback('cb_default', args)
-        if files != []: return self.render_page(files)
-
         z = args[0]
         l = len(args)
-        if l <= len(self.timeformats):
+        if l < len(self.timeformats):
             #check to see if args represent a date
             for fmt in self.timeformats[l-1]:
                 try:
-                    #join the args, and see if the format works
                     t = time.strptime(' '.join(args), fmt)
-
-                    #if it works, split it into year, month, day, if possible
                     if "%Y" in fmt:
                         year = t[0]
                     else:
@@ -184,8 +167,7 @@ class BlogRoot(object):
                     else:
                         day = None
                     entries = FileCabinet.get_entries_by_date(year, month, day)
-                    if entries:
-                        return self.render_page(entries)
+                    return self.render_page(entries)
                 except ValueError:
                     #not a date - move on
                     pass
@@ -200,5 +182,11 @@ if __name__ == '__main__':
     #set our current directory to the dir with blox.py in it
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
-    cpy.root = BlogRoot()
-    cpy.server.start()
+    #Because I need config before instantiating BlogRoot, I need to have a
+    #separate site config file; config otherwise discards everything but the
+    #"global" section. Sucky.
+    cpy.config.update("site.conf")
+    #we need to load the config before instantiating the BlogRoot object
+    cpy.config.update("cherryblossom.conf")
+
+    cpy.quickstart(BlogRoot(), "/", "cherryblossom.conf")

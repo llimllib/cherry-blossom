@@ -46,7 +46,7 @@ class Rss:
         return self.prepare_rss_template(entries[:num_entries])
 
     def prepare_rss_template(self, entries):
-        ns = cpy.config.configMap['cherryblossom'].copy()
+        ns = cpy.config.get('/').copy()
         entry_structs = []
         for e in entries:
             #XXX: what exactly is the <guid> element?
