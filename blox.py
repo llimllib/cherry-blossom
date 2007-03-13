@@ -138,12 +138,12 @@ class BlogRoot(object):
 
         return page
 
-    def stripall(self, str, *strippers):
+    def stripall(self, str_, *strippers):
         """return a string stripped of all extensions in strippers"""
         for stripper in strippers:
-            if str.endswith(stripper):
-                str = str[:-len(stripper)]
-        return str
+            if str_.endswith(stripper):
+                str_ = str_[:-len(stripper)]
+        return str_
 
     @cpy.expose
     def default(self, *args):

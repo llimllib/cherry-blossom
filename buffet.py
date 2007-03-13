@@ -6,6 +6,8 @@ import pkg_resources
 
 available_engines = {}
 
+class TemplateEngineMissing(Exception): pass
+
 def cherrypy_vars():
     return {'cherrypy':cherrypy}
 
@@ -76,16 +78,16 @@ class BuffetTool(Tool):
     def before_finalize(self):
         body = cherrypy.response.body
         if _is_template_request(body):
-            template_path, vars = body
-            cherrypy.response.body = self.render_template(template_path, vars)
+            template_path, vars_ = body
+            cherrypy.response.body = self.render_template(template_path, vars_)
         elif _requires_template(body):
             result = []
-            for template_path, vars in body:
-                result.append(self.render_template(template_path, vars))
+            for template_path, vars_ in body:
+                result.append(self.render_template(template_path, vars_))
             cherrypy.response.body = flatten(result)
         return
 
-    def render_template(self, template_path, vars):
+    def render_template(self, template_path, vars_):
         base_path_parts = self.template_root.split('/')
         tmpl_path_parts = template_path.split('/')
         full_path = path.join(*(base_path_parts + tmpl_path_parts))
@@ -93,5 +95,5 @@ class BuffetTool(Tool):
         # path to the template - blame TurboGears ;-)
         dotted_path = full_path.replace(path.sep, '.')
         dotted_path = dotted_path.lstrip('.')
-        page_data = self.engine.render(vars, template=dotted_path)
+        page_data = self.engine.render(vars_, template=dotted_path)
         return page_data.splitlines(1)
