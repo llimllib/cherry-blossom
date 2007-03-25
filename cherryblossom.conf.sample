@@ -20,7 +20,7 @@ blog_email="john.doe@example.com"
 datadir="./entries"
 
 ### The base url of your blog
-base_url="http://localhost:4567/"
+base_url="http://localhost:4444/"
 
 ### The number of entries to show on the first page of your blog and in your
 ### rss feeds
