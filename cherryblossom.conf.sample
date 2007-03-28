@@ -48,6 +48,12 @@ template_engine = "cheetah"
 ### template_dir is the directory in which your template files reside
 template_dir = "./templates"
 
+[cheetah_settings]
+###by default, cheetah will recompile all of your templates automatically. This is
+###great for development, but slow. Set this to True if you want to turn off template
+###recompiling
+cheetah.precompiled=False
+
 ### This directive creates a static directory at base_url/static; to turn this off,
 ### simply change True to False or comment out that line
 [/static]
