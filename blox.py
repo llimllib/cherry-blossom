@@ -22,8 +22,6 @@ class BlogRoot(object):
                                       config("template_dir"))
 
         #and make the static root into the cd
-
-
         self.now = datetime.datetime.now
         self.last_update = self.now()
         self.num_entries = config('num_entries')
@@ -88,7 +86,7 @@ class BlogRoot(object):
         """renders a collection of entries into a web page"""
         page = []
         #namespace for the template substitution (starts with config opts)
-        ns = cpy.config.get('/')
+        ns = cpy.config.get('/').copy()
 
         #in order to make an offset url, we need
         #$base_url/$currentModule(s)?offset=$offset&othervars=$othervars
