@@ -43,18 +43,20 @@ plugin_dir="./plugins"
 date_fmt="%b %d, %Y"
 
 ### template_engine is the name of the templating engine you're using
-template_engine = "cheetah"
+template_engine = "mako"
 
-### template_dir is the directory in which your template files reside
-template_dir = "./templates"
+[mako_settings]
+### Tell mako that you are allowed to use the attributes dictionary
+### (see http://www.makotemplates.org/docs/runtime.html)
+attributes={}
 
-[cheetah_settings]
-###by default, cheetah will recompile all of your templates automatically. This is
-###great for development, but slow. Set this to True if you want to turn off automatic 
-#@@template recompiling
-cheetah.precompiled=False
+### Tell mako where to find its templates
+directories='templates/mako'
 
-### This directive creates a static directory at base_url/static; to turn this off,
+### And where to output its compiled modules
+module_directory='templates/mako'
+
+### This section creates a static directory at base_url/static; to turn this off,
 ### simply change True to False or comment out that line
 [/static]
 tools.staticdir.on = True
