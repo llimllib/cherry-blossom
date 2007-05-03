@@ -7,7 +7,7 @@
         <language>${blog_lang}</language>
         <dc:creator>${blog_author} ${blog_email}</dc:creator>
         <admin:errorReportsTo rdf:resource="mailto:${blog_email}"/>
-%for e in entries
+%for e in entries:
         <item>
             <title>${e.title}</title>
             <guid isPermaLink="false">${e.relpath}</guid>
