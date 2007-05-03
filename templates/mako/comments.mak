@@ -1,9 +1,9 @@
-%for cmt in comments
+%for cmt in comments:
 <div class="comment">
     <br />${cmt.text}<br />
-    %if cmt.url
+    %if cmt.url:
         Posted by <a href=${cmt.url}>${cmt.author}</a>
-    %else
+    %else:
         Posted by ${cmt.author}
     %endif
     <br />
