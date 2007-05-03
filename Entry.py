@@ -79,10 +79,13 @@ class Entry(object):
             cpy.log('getting text of %s' % self.filename)
             txt = file(self.filename).readlines()
             self.reload_flag = 1
-            i = 1
-            while txt[i].startswith('#'):
-                i+=1
-            self._text = ''.join(txt[i:])
+            if len(txt) > 2:
+                i = 1
+                while txt[i].startswith('#'):
+                    i+=1
+                self._text = ''.join(txt[i:])
+            else:
+                self._text = ''
         return self._text
 
     text = property(gettext)

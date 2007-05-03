@@ -14,5 +14,6 @@ ${text}
 		<% attributes['commentstr'] = '' %>
 	%endtry
 %endif
-[<a href="${base_url}${relpath}">#${context.get('commentstr')}</a>] ${context.get('keywords', '')}
+[<a href="${base_url}${relpath}">#${context.get('commentstr', '')}</a>] 
+${context.get('keywords', '')}
 </div>

@@ -23,7 +23,7 @@ class Keywords(object):
         self.keyword = args[0]
         
         #remember we're not sure if base_url has a trailing '/' or not...
-        if 'Rss' in self.parent.plugins:
+        if 'Rss' in config("plugins"):
             self.rss_link = config('base_url').rstrip('/') + \
                 '/Rss/keyword/' + self.keyword
         

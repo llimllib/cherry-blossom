@@ -18,8 +18,7 @@ class BlogRoot(object):
         self.plugins = [] #contains all loaded plugins
 
         #turn on the templating engine
-        cpy.tools.buffet = BuffetTool(config("template_engine"),
-                                      config("template_dir"))
+        cpy.tools.buffet = BuffetTool(config("template_engine"))
 
         #and make the static root into the cd
         self.now = datetime.datetime.now
