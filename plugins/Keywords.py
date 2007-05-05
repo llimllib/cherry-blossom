@@ -50,7 +50,6 @@ class Keywords(object):
         base_url = config('base_url')
         base_url = base_url.rstrip('/')
         #list comp for 2.3 compatibility
-        import pdb; pdb.set_trace()
         kws = [k.strip() for k in keysplit(entry.metadata.get('keywords', "")) if k != '']
         links = ['<a href=%s/Keywords/%s>%s</a>' % (base_url, quote_plus(kw), kw) 
                     for kw in kws]
