@@ -83,6 +83,9 @@ class Comments(object):
         #XXX: is it right to modify the actual entry object permanently with
         #     this? It sticks in my craw a bit
         entry.n_comments = self.count_comments(entry.relpath)
+        #mako doesn't allow us to modify or create variables outside of a
+        #dictionary, so give it one.
+        entry.attributes = {}
 
     def cb_story_end(self, entries):
         """If this is a single entry, get the comments and add the 
