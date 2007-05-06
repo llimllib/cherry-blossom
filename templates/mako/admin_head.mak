@@ -1,3 +1,3 @@
 <html><head><title>${title}</title>
 <body>
-Actions: <a href="ls">Edit Stories</a><br/><br/>
+Actions: <a href="/Admin/ls">Edit Stories</a><br/><br/>

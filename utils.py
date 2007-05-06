@@ -1,4 +1,5 @@
 import cherrypy as cpy
+import time
 
 def config(key, default=None, path='/'):
     if cpy.config.get(path):
@@ -24,13 +25,13 @@ def run_callback(plugins, callback, *args, **kwargs):
     return datums
 
 def htmlescape(text):
-        """HTML excape the string"""
-        return text.replace('&', '&amp;') \
-                   .replace('<', '&lt;') \
-                   .replace('>', '&gt;')
+    """HTML excape the string"""
+    return text.replace('&', '&amp;') \
+               .replace('<', '&lt;') \
+               .replace('>', '&gt;')
 
 def htmlunescape(text):
-        """Reverse-escapes &, <, > and " and returns a `str`."""
-        return text.replace('&gt;', '>') \
-                   .replace('&lt;', '<') \
-                   .replace('&amp;', '&')
+    """Reverse-escapes &, <, > and " and returns a `str`."""
+    return text.replace('&gt;', '>') \
+               .replace('&lt;', '<') \
+               .replace('&amp;', '&')
