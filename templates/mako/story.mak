@@ -14,6 +14,12 @@ ${text}
 		<% attributes['commentstr'] = '' %>
 	%endtry
 %endif
-[<a href="${base_url}${relpath}.html">#${attributes.get('commentstr', '')}</a>] 
+
+%if context.get('attributes'):
+	[<a href="${base_url}${relpath}.html">#${attributes.get('commentstr', '')}</a>] 
+%else:
+	[<a href="${base_url}${relpath}.html">#</a>] 
+%endif
+
 ${context.get('keywords', '')}
 </div>
