@@ -22,3 +22,15 @@ def run_callback(plugins, callback, *args, **kwargs):
                 for item in returnval:
                     datums.append(item)
     return datums
+
+def htmlescape(text):
+        """HTML excape the string"""
+        return text.replace('&', '&amp;') \
+                   .replace('<', '&lt;') \
+                   .replace('>', '&gt;')
+
+def htmlunescape(text):
+        """Reverse-escapes &, <, > and " and returns a `str`."""
+        return text.replace('&gt;', '>') \
+                   .replace('&lt;', '<') \
+                   .replace('&amp;', '&')

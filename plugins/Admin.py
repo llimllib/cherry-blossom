@@ -2,7 +2,7 @@ import cherrypy as cpy
 import md5
 import os
 import FileCabinet
-from utils import config
+from utils import config, htmlescape, htmlunescape
 
 class Admin(object):
     _cp_config = {"tools.basic_auth.on": True,
@@ -28,9 +28,12 @@ class Admin(object):
             return
         title = "Editing file %s" % filename
         story_title = f.readline()
-        body = f.read()
+        body = htmlescape(f.read())
+
+        ns = locals()
+        del ns['self']
         
-        return [('admin_head', locals()), ('admin_storyedit', locals())]
+        return [('admin_head', ns), ('admin_storyedit', ns)]
 
     @cpy.expose
     def update_story(self, story_title="", story_body="", filename=""):
@@ -38,7 +41,8 @@ class Admin(object):
             raise cpy.InternalRedirect("ls")
         f = open(os.path.join(config('datadir'), filename), 'w')
         f.write(story_title + "\n")
-        f.write(story_body)
+        import pdb; pdb.set_trace()
+        f.write(htmlunescape(story_body))
         return [('admin_head', {"title": "Successfully updated"}),
                 ('admin_updated', {"filename": f})]
 
@@ -47,4 +51,8 @@ class Admin(object):
         dirname = os.path.join(config('datadir'), dir)
         l = [f for f in os.listdir(dirname) if f.endswith('.txt')]
         title = "Listing dir %s" % dir
-        return [('admin_head', locals()), ('admin_ls', locals())]
+
+        ns = locals()
+        del ns['self']
+
+        return [('admin_head', ns), ('admin_ls', ns)]

@@ -36,6 +36,7 @@
         I blog at irregular intervals about various programming topics, but mostly
         Python.
         </p>
+		<p><a href="http://ronpaul2008.com"><img src="static/ronpaul.png"></a></p>
 </div><!-- end more info -->
 
 </div><!--end main box div-->
