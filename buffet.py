@@ -38,10 +38,9 @@ def _requires_template(body, expandtypes=(list, tuple)):
     return False
 
 def _is_template_request(body):
-    if isinstance(body, tuple):
-        if len(body) == 2:
-            if isinstance(body[0], str) and isinstance(body[1], dict):
-                return True
+    if isinstance(body, tuple) and len(body) == 2:
+        if isinstance(body[0], str) and isinstance(body[1], dict):
+            return True
     return False
 
 def flatten(seq, expandtypes=(list, tuple)):

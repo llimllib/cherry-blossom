@@ -1,3 +1,7 @@
 <html><head><title>${title}</title>
 <body>
-Actions: <a href="/Admin/ls">Edit Stories</a><br/><br/>
+Actions: 
+%for mod in modules:
+	<a href="/Admin/${mod['link']}">${mod['title']}</a> &nbsp;
+%endfor
+<br/><br/>

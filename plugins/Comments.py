@@ -78,6 +78,19 @@ class Comments(object):
                 comments.append(cmt)
         return ('comments', {'comments': comments})
 
+    def get_all_comments(self):
+        """return all comments, regardless of story"""
+        comments = []
+        for f in os.listdir(self.commentdir):
+            f = file(os.path.join(self.commentdir, f))
+            fstory = f.readline().strip()
+            cmt = CommentStruct()
+            lines = f.readlines()
+            cmt.author, cmt.email, cmt.url = [l.strip() for l in lines[:3]]
+            cmt.text = ''.join(lines[3:])
+            comments.append(cmt)
+        return comments
+
     def cb_story(self, entry):
         """Add the number of comments to the entry's namespace"""
         #XXX: is it right to modify the actual entry object permanently with
@@ -92,8 +105,15 @@ class Comments(object):
         "Add Comment" form"""
         if len(entries) == 1:
             story = entries[0].relpath
-            return (self.get_comments(story), self.comment_form(story))
+            return [self.get_comments(story), self.comment_form(story)]
 
     def comment_form(self, story):
         url = urljoin(config('base_url'), '/Comments/add')
         return ('comment_form', {'url': url, 'story':story})
+
+    def cb_admin_navbar(self):
+        return {'link': 'ls_comments', 'title': 'List Comments'}
+
+    def cb_admin_call(self, f):
+        if f == "ls_comments":
+            return ('admin_ls_comments', {'comments': self.get_all_comments()})

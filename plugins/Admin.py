@@ -2,7 +2,7 @@ import cherrypy as cpy
 import md5
 import os
 import FileCabinet
-from utils import config, htmlescape, htmlunescape
+from utils import config, htmlescape, htmlunescape, run_callback
 
 class Admin(object):
     _cp_config = {"tools.basic_auth.on": True,
@@ -11,12 +11,22 @@ class Admin(object):
                                    md5.new(config("admin_pw")).hexdigest()},
         "tools.expires.on": True}
 
-    def __init__(self, parent): pass
+    def __init__(self, parent):
+        self.parent = parent
 
     @cpy.expose
     def index(self):
         #TODO: what's the right redirect to give here?
         raise cpy.InternalRedirect("/Admin/ls")
+
+    def navbar(self, ns):
+        """Run a callback so that any module can add an element to the Admin
+        navbar"""
+        ns['modules'] = run_callback(self.parent.plugins, "cb_admin_navbar", )
+        return ('admin_head', ns)
+
+    def cb_admin_navbar(self):
+        return {'link': 'ls', 'title': 'Edit Stories'}
 
     @cpy.expose
     def edit(self, filename):
@@ -35,7 +45,7 @@ class Admin(object):
         ns = locals()
         del ns['self']
 
-        return [('admin_head', ns), ('admin_storyedit', ns)]
+        return [self.navbar(ns), ('admin_storyedit', ns)]
 
     @cpy.expose
     def update_story(self, story_title="", story_body="", filename=""):
@@ -49,14 +59,13 @@ class Admin(object):
             f.write(story_title + "\n")
             f.write(htmlunescape(story_body))
         except Exception, e:
-            import pdb; pdb.set_trace()
             os.unlink(tmpfile)
             cpy.log("unable to log: " + e.Message)
         finally:
             f.close()
         os.rename(tmpfile, filename)
 
-        return [('admin_head', {"title": "Successfully updated"}),
+        return [self.navbar({"title": "Successfully updated"}),
                 ('admin_updated', {"filename": f})]
 
     @cpy.expose
@@ -68,4 +77,17 @@ class Admin(object):
         ns = locals()
         del ns['self']
 
-        return [('admin_head', ns), ('admin_ls', ns)]
+        return [self.navbar(ns), ('admin_ls', ns)]
+
+    @cpy.expose
+    def default(self, *args, **kwargs):
+        try:
+            f = args[0]
+        except ValueError: pass
+
+        #cb_admin_call should return (("template1", {namespace}), ("template2", {ns})) 
+        #if it handles function f
+        page = [self.navbar({'title': f})]
+        page.extend(run_callback(self.parent.plugins, "cb_admin_call", f))
+        print page
+        return page
