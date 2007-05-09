@@ -26,6 +26,12 @@ class Keywords(object):
             return self.parent.error_page("too many arguments to Keywords")
         elif len(args) < 1:
             return self.parent.error_page("Too few arguments to Keywords")
+
+        import pdb; pdb.set_trace()
+        try:
+            offset = int(kargs.get('offset', 0))
+        except ValueError:
+            offset = 0
         
         self.keyword = unquote_plus(args[0])
         print "Key =  %s" % self.keyword
@@ -37,7 +43,8 @@ class Keywords(object):
         
         entries = get_entries_by_meta('keywords')
         entries = [e for e in entries if self.keyword in keysplit(e.metadata['keywords'])]
-        return self.parent.render_page(entries)
+        entries = entries[offset:offset + config("num_entries")]
+        return self.parent.render_page(entries, self.keyword, offset)
 
     def cb_add_data(self):
         if self.rss_link:

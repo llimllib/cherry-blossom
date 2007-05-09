@@ -41,7 +41,7 @@ class BlogRoot(object):
             offset = int(offset)
         except ValueError:
             offset = 0
-        return self.render_page(self.files(offset), offset)
+        return self.render_page(self.files(offset), 'index', offset)
 
     def init_plugins(self, pluginlist):
         """
@@ -81,14 +81,17 @@ class BlogRoot(object):
         ns.update({'error': error})
         return (('head', ns), ('error', ns), ('foot', ns))
 
-    def render_page(self, entries, offset=0):
+    def render_page(self, entries, pagename='', offset=0):
         """renders a collection of entries into a web page"""
         page = []
         #namespace for the template substitution (starts with config opts)
         ns = cpy.config.get('/').copy()
 
+        #pagename is the page we're offsetting. see below comment.
+        ns['pagename'] = pagename
+
         #in order to make an offset url, we need
-        #$base_url/$currentModule(s)?offset=$offset&othervars=$othervars
+        #$base_url/$pagename?offset=$offset&othervars=$othervars
         if len(entries) == ns['num_entries']:
             ns['offset'] = offset + ns['num_entries']
 
@@ -145,9 +148,9 @@ class BlogRoot(object):
     @cpy.expose
     def default(self, *args):
         #allow a plugin to handle a default url if it wants; it needs to return 
-        #Entry objects if it does 
-        files = run_callback(self.plugins, 'cb_default', args) 
-        if files != []: return self.render_page(files)
+        #a tuple (pagename, [Entry objects]) if it does 
+        pagename, files = run_callback(self.plugins, 'cb_default', args) 
+        if files != []: return self.render_page(files, pagename)
 
         z = args[0]
         l = len(args)
@@ -170,7 +173,8 @@ class BlogRoot(object):
                         day = None
                     entries = FileCabinet.get_entries_by_date(year, month, day)
                     if entries:
-                        return self.render_page(entries)
+                        #TODO: test this guy
+                        return self.render_page(entries, ' '.join(args))
                 except ValueError:
                     #not a date - move on
                     pass

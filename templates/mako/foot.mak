@@ -1,6 +1,6 @@
 %if context.get('offset'):
     <div id="next-button">
-        <a href="index?offset=${offset}">next ${num_entries} &gt;&gt;</a>
+        <a href="${pagename}?offset=${offset}">next ${num_entries} &gt;&gt;</a>
         &nbsp; &nbsp;
     </div>
 %endif
