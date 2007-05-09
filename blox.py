@@ -92,8 +92,9 @@ class BlogRoot(object):
 
         #in order to make an offset url, we need
         #$base_url/$pagename?offset=$offset&othervars=$othervars
+        ns['offset'] = offset
         if len(entries) == ns['num_entries']:
-            ns['offset'] = offset + ns['num_entries']
+            ns['offset_next'] = offset + ns['num_entries']
 
         #cb_add_data is the plugin's chance to add data to the story template
         #            it should return a list of
@@ -146,11 +147,16 @@ class BlogRoot(object):
         return str_
 
     @cpy.expose
-    def default(self, *args):
+    def default(self, *args, **kwargs):
         #allow a plugin to handle a default url if it wants; it needs to return 
         #a tuple (pagename, [Entry objects]) if it does 
-        pagename, files = run_callback(self.plugins, 'cb_default', args) 
-        if files != []: return self.render_page(files, pagename)
+        call_result = run_callback(self.plugins, 'cb_default', args) 
+        if call_result != []: return self.render_page(call_result[1:], call_result[0])
+
+        try:
+            offset = int(kwargs.get('offset', 0))
+        except ValueError:
+            offset = 0
 
         z = args[0]
         l = len(args)
@@ -173,8 +179,8 @@ class BlogRoot(object):
                         day = None
                     entries = FileCabinet.get_entries_by_date(year, month, day)
                     if entries:
-                        #TODO: test this guy
-                        return self.render_page(entries, ' '.join(args))
+                        entries = entries[offset:offset + config('num_entries')]
+                        return self.render_page(entries, ' '.join(args), offset)
                 except ValueError:
                     #not a date - move on
                     pass
