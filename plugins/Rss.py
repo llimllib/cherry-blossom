@@ -19,6 +19,10 @@ class EntryStruct(object):
         self.title = ''
 
 class Rss(object):
+    #turn on etags, so we get last-modified
+    _cp_config = {"tools.etags.on": True,
+        "tools.etags.autotags": True}
+
     def __init__(self, parent):
         pass
 
