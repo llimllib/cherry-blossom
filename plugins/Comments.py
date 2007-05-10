@@ -15,6 +15,8 @@ class CommentStruct(object):
         self.url = ''
         self.author = ''
         self.email = ''
+        self.filename = ''
+        self.story = ''
 
 class CommentError(Exception):
     pass
@@ -31,6 +33,12 @@ class Comments(object):
             raise CommentError, "Comment Directory Not Found"
 
         self.sanitize = re.compile('\W').sub
+
+    def delete(self, filename):
+        try:
+            os.unlink(os.path.join(self.commentdir, filename))
+        except OSError:
+            cpy.log("unable to delete file %s" % filename)
 
     @cpy.expose
     def add(self, story='', author='', email='', url='', comment='', **kwargs):
@@ -68,11 +76,14 @@ class Comments(object):
             story"""
         comments = []
         for f in os.listdir(self.commentdir):
-            f = file(os.path.join(self.commentdir, f))
-            fstory = f.readline().strip()
+            fin = file(os.path.join(self.commentdir, f))
+            fstory = fin.readline().strip()
             if fstory == story:
+                lines = fin.readlines()
+
                 cmt = CommentStruct()
-                lines = f.readlines()
+                cmt.filename = f
+                cmt.story = fstory
                 cmt.author, cmt.email, cmt.url = [l.strip() for l in lines[:3]]
                 cmt.text = ''.join(lines[3:])
                 comments.append(cmt)
@@ -82,10 +93,13 @@ class Comments(object):
         """return all comments, regardless of story"""
         comments = []
         for f in os.listdir(self.commentdir):
-            f = file(os.path.join(self.commentdir, f))
-            fstory = f.readline().strip()
+            fin = file(os.path.join(self.commentdir, f))
+            fstory = fin.readline().strip()
+            lines = fin.readlines()
+
             cmt = CommentStruct()
-            lines = f.readlines()
+            cmt.filename = f
+            cmt.story = fstory
             cmt.author, cmt.email, cmt.url = [l.strip() for l in lines[:3]]
             cmt.text = ''.join(lines[3:])
             comments.append(cmt)
@@ -114,6 +128,16 @@ class Comments(object):
     def cb_admin_navbar(self):
         return {'link': 'ls_comments', 'title': 'List Comments'}
 
-    def cb_admin_call(self, f):
+    def cb_admin_call(self, f, args, kwargs):
         if f == "ls_comments":
             return ('admin_ls_comments', {'comments': self.get_all_comments()})
+        if f == "delete_comments":
+            deletes = kwargs['delete_filename']
+            if len(deletes) == 0: return
+            elif type(deletes) == type(''): deletes = [deletes]
+
+            import pdb; pdb.set_trace()
+            for f in deletes:
+                self.delete(f)
+
+            raise cpy.HTTPRedirect("/Admin/ls_comments")

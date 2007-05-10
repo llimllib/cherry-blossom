@@ -32,7 +32,8 @@ class Admin(object):
     def edit(self, filename):
         try:
             #XXX: are we sure that filename can't ref previous dirs? ../ didn't
-            #       work in my basic test, but how should we better sanitize this?
+            #       work in my basic test, but how should we better sanitize 
+            #       this?
             fullname = os.path.join(config("datadir"), filename)
             f = file(fullname)
         except IOError:
@@ -88,6 +89,6 @@ class Admin(object):
         #cb_admin_call should return (("template1", {namespace}), ("template2", {ns})) 
         #if it handles function f
         page = [self.navbar({'title': f})]
-        page.extend(run_callback(self.parent.plugins, "cb_admin_call", f))
-        print page
+        page.extend(run_callback(
+            self.parent.plugins, "cb_admin_call", f, args, kwargs))
         return page
