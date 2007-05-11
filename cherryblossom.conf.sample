@@ -42,6 +42,9 @@ plugin_dir="./plugins"
 ### strings
 date_fmt="%b %d, %Y"
 
+### The format you want for your "time" meta keywords
+time_fmt="%m-%d-%y %H:%M"
+
 ### template_engine is the name of the templating engine you're using
 template_engine = "mako"
 

@@ -61,7 +61,7 @@ class Entry(object):
         if self.meta('time'):
             try:
                 self.time_tuple = time.strptime(self.meta('time'),
-                                                '%m-%d-%y %H:%M')
+                                                config('time_fmt'))
                 self.time = time.mktime(self.time_tuple)
                 get_mtime = False
             except ValueError:
