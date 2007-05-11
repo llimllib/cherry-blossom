@@ -126,7 +126,7 @@ class Comments(object):
         return ('comment_form', {'url': url, 'story':story})
 
     def cb_admin_navbar(self):
-        return {'link': 'ls_comments', 'title': 'List Comments'}
+        return [('ls_comments', 'List Comments')]
 
     def cb_admin_call(self, f, args, kwargs):
         if f == "ls_comments":

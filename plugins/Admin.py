@@ -22,11 +22,42 @@ class Admin(object):
     def navbar(self, ns):
         """Run a callback so that any module can add an element to the Admin
         navbar"""
+        ### this callback gives an admin module the ability to add a link to
+        ### the navigation bar of the Admin section. It should return a list of
+        ### (string, string) tuples where the first string is the relative link
+        ### to the function, and the second is the name to display on the menu
         ns['modules'] = run_callback(self.parent.plugins, "cb_admin_navbar", )
         return ('admin_head', ns)
 
     def cb_admin_navbar(self):
-        return {'link': 'ls', 'title': 'Edit Stories'}
+        return [('ls', 'Edit Stories'), ('add', 'Add Story')]
+
+    @cpy.expose
+    def add(self):
+        #XXX: Should I move story editing to a plugin?
+        ns = {'title': "Adding New Entry"}
+        return [self.navbar(ns), ('admin_storyadd', ns)]
+
+    @cpy.expose
+    def add_story(self, story_title="", story_body="", filename=""):
+        if story_title == "" or story_body == "" or filename == "":
+            raise cpy.InternalRedirect("ls")
+
+        filename = os.path.join(config('datadir'), filename)
+        if not filename.endswith('.txt'): filename += '.txt'
+        
+        if os.path.isfile(filename): 
+            ns = {'title': 'File Already Exists', 'filename': filename}
+            return [self.navbar(ns), ('admin_story_already_exists', ns)]
+
+        try:
+            f = open(filename, 'w')
+            f.write(story_title + "\n")
+            f.write(htmlunescape(story_body))
+        except Exception, e:
+            cpy.log("unable to log: " + e.Message)
+        finally:
+            f.close()
 
     @cpy.expose
     def edit(self, filename):
