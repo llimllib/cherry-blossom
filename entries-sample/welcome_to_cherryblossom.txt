@@ -1,0 +1,5 @@
+Welcome to Cherry Blossom!
+To add a blog entry, simply put a new .txt file into the "entries" directory.<p>
+
+For help, check out <a href="http://billmill.org:9561/cherry_blossom">the Cherry
+Blossom website</a>.
