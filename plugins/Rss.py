@@ -56,7 +56,7 @@ class Rss(object):
             es = EntryStruct()
             es.title = e.title
             es.desc = self.strip_html(e.text)
-            es.link = urljoin(config('base_url'), e.relpath)
+            es.link = urljoin(config('base_url'), e.relpath + '.html')
             es.relpath = e.relpath
             es.time = time.strftime('%Y-%m-%dT%H:%M:%SZ', e.time_tuple)
             es.text = e.text
