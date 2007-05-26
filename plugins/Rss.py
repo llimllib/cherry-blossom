@@ -55,7 +55,9 @@ class Rss(object):
             #XXX: what is the category tag? should keywords go here?
             es = EntryStruct()
             es.title = e.title
-            es.desc = self.strip_html(e.text)
+            #because <style> messed me up, I'm going to stop stripping
+            #HTML out of my description. The RSS spec sucks.
+            es.desc = e.text
             es.link = urljoin(config('base_url'), e.relpath + '.html')
             es.relpath = e.relpath
             es.time = time.strftime('%Y-%m-%dT%H:%M:%SZ', e.time_tuple)

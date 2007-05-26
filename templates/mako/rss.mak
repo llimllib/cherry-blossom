@@ -12,7 +12,7 @@
             <title>${e.title}</title>
             <guid isPermaLink="false">${e.relpath}</guid>
             <link>${e.link}</link>
-            <description>${e.desc}</description>
+            <description><![CDATA[${e.desc}]]></description>
             <content:encoded><![CDATA[${e.text}]]></content:encoded>
             <category domain="${base_url}">${e.relpath}</category>
             <dc:date>${e.time}</dc:date>
