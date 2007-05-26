@@ -7,7 +7,7 @@ body {
 	background-color: #ACB5B4;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 100.01%;
-	background-image: url(back3.jpg);
+	background-image: url(back2.gif);
 	background-repeat: repeat-y;
 	background-position: 50% 0px;
 }
@@ -86,13 +86,16 @@ a:hover{
 }
 #right-navlist a {
 	width: 99.99%;
-	/*display: block;*/
-	border-bottom: 1px solid #FFFFFF;
+	border-bottom: 1px solid #bfcdda;
 	text-align: left;
 	text-decoration: none;
 	color: #02486C;
 }
-
+#blog-buttons {
+	text-align: center;
+    border: 0px;
+    margin-top: 100 px;
+}
 #right-navlist a#current, #right-navlist a:hover, #more-info a:hover{
 	background-color: #bdced8;
 }
@@ -114,7 +117,6 @@ a:hover{
 }
 #more-info a{
 	width: 99.99%;
-	border-bottom: 1px solid #FFFFFF;
 	text-align: left;
 	text-decoration: none;
 	color: #02486C;

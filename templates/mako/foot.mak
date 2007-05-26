@@ -9,7 +9,7 @@
 <div id="right-menu">
 <div id="navcontainer"> <!--begin side navigation -->
     <div id="logo">
-        <img src="/static/billmill.gif">
+        <img src="/static/billmill_blu.gif">
     </div>
     <ul id="right-navlist">
         <li>
@@ -36,7 +36,9 @@
         I blog at irregular intervals about various programming topics, but mostly
         Python.
         </p>
-		<p><a href="http://ronpaul2008.com"><img src="static/ronpaul.png"></a></p>
+		<div id="blog-buttons">
+			<p><a href="http://ronpaul2008.com"><img border=0 src="static/ronpaul.png"></a></p>
+		</div>
 </div><!-- end more info -->
 
 </div><!--end main box div-->
