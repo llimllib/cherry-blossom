@@ -9,6 +9,6 @@
 engine.autoreload_on=False
 
 ### Turn this off in production!
-screen.logging=True
+log.screen=True
 
 server.socket_port=4444
