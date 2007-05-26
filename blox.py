@@ -104,19 +104,21 @@ class BlogRoot(object):
 
         #let the header access the first article's info 
         if len(entries):
-            for key in ('title', 'text', 'relpath', 'tmstr'):
+            for key in ('title', 'relpath', 'tmstr'):
                 ns[key] = getattr(entries[0], key)
-
         page.append(('head', ns))
 
         #cb_story_start is a plugin's chance to put text between a header
         #               and all stories. Any text returned by it will be
-        #               inserted there. It must return one or more template 
+        #               inserted there. It must return zero or more template 
         #               tuples. A template tuple consists of
         #               (template, data_dictionary) which is (string, dict)
         page.extend(run_callback(self.plugins, 'cb_story_start', entries))
 
         for e in entries:
+            #it's a lazy object, but plugins may need the data, so let's load it
+            e.text
+
             #cb_story lets a plugin insert variables just for one particular
             #         entry. It is given the story object, and may modify it.
             run_callback(self.plugins, 'cb_story', e)
