@@ -1,3 +1,5 @@
+"""Prerequisites: pygments (http://pygments.org)"""
+
 import cherrypy as cpy
 import re
 import pygments
