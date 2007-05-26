@@ -35,15 +35,17 @@ def scan_for_entries(curdir, ignore_dirs, basedir):
     """recursively scans directories for entries"""
     if os.path.isdir(curdir):
         for file in os.listdir(curdir):
-            cpy.log("Scanned file %s" % file)
+            #cpy.log("Scanned file %s" % file)
             f = os.path.join(curdir, file)
-            if os.path.isdir(f) and not os.path.basename(f) in ignore_dirs:
+            if os.path.isdir(f) and not os.path.basename(f) in ignore_dirs \
+            and not f.startswith('.'):
                 scan_for_entries(f, ignore_dirs, basedir)
             elif f.endswith('.txt'):
                 e = Entry(f, basedir)
                 ENTRIES[e.relpath] = e
     else:
-        cpy.log("Entries dir not found: %s" % curdir)
+        #cpy.log("Entries dir not found: %s" % curdir)
+        pass
 
 def get_all(datadir):
     """returns all entries"""
@@ -55,7 +57,7 @@ def get_one(fname, datadir):
 
 def get_entries_by_date(year, month='', day=''):
     """returns a list of entry objects"""
-    cpy.log("date: %s %s %s" % (year, month, day))
+    #cpy.log("date: %s %s %s" % (year, month, day))
     if not month and not day:
         res = [(e.time, e) for e in SORTED_ENTRIES if e.time_tuple[0] == year]
     elif not day:
