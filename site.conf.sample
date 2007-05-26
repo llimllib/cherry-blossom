@@ -1,17 +1,12 @@
 ##############################################################################
 ### Use the global section to change cherrypy global configuration parameters.
-### See http://www.cherrypy.org/trunk/docs/book/html/index.html#id3396178
-### for more information
 ##############################################################################
 [global]
-### cherrypy server.environment - set to "development" for debugging
-server.environment="production"
+### uncomment this line in production
+#environment = 'production'
 
-### Turn profiling on or off, and tell cherrypy where to put the information
-### if it's on. You can use profiler.py (located in cherrypy/lib) to view
-### profiling information on your blog
-profiling.on="false"
-profiling.path="./profile"
+### turn autoreload on or off (handy for debugging)
+engine.autoreload_on=False
 
 ### Turn this off in production!
 screen.logging=True
