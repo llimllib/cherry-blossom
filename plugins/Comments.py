@@ -1,13 +1,13 @@
-import re, os, time
-import cherrypy as cpy
-from urllib import basejoin as urljoin
-from utils import config
-
 """
 CONFIGURATION PARAMETERS:
 
 commentdir (string): Directory in which to keep/find comments
 """
+
+import re, os, time
+import cherrypy as cpy
+from urllib import basejoin as urljoin
+from utils import config
 
 class CommentStruct(object):
     def __init__(self):
