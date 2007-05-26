@@ -1,6 +1,8 @@
 """
-CONFIGURATION PARAMETERS:
+Configuration for comments module should be in a [comments] secion of your
+    cherryblossom.conf file.
 
+options:
 commentdir (string): Directory in which to keep/find comments
 """
 
