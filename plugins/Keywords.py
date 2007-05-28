@@ -17,7 +17,7 @@ def keysplit(str):
 class Keywords(object):
     def __init__(self, parent):
         self.keyword = ''
-        self.rss_link = ''
+        self.atom_link = ''
         self.parent = parent
 
     @cpy.expose
@@ -37,8 +37,8 @@ class Keywords(object):
         
         #remember we're not sure if base_url has a trailing '/' or not...
         if 'Rss' in config("plugins"):
-            self.rss_link = config('base_url').rstrip('/') + \
-                '/Rss/keyword/' + self.keyword
+            self.atom_link = config('base_url').rstrip('/') + \
+                '/Atom/keyword/' + self.keyword
         
         entries = get_entries_by_meta('keywords')
         entries = [e for e in entries if self.keyword in keysplit(e.metadata['keywords'])]
@@ -46,8 +46,8 @@ class Keywords(object):
         return self.parent.render_page(entries, self.keyword, offset)
 
     def cb_add_data(self):
-        if self.rss_link:
-            return {'keywordrss': self.rss_link, 'keyword': self.keyword}
+        if self.atom_link:
+            return {'keywordrss': self.atom_link, 'keyword': self.keyword}
 
     def cb_story(self, entry):
         """Add a $keywords variable to an entry which is a linkified,
@@ -65,4 +65,4 @@ class Keywords(object):
     def cb_page_end(self):
         """clean up our data"""
         self.keyword = ''
-        self.rss_link = ''
+        self.atom_link = ''
