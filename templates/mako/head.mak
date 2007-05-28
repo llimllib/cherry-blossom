@@ -1,5 +1,8 @@
 <html><head>
-<link rel="alternate" type="application/rss+xml" title="billmill.org RSS Feed" href="http://billmill.org/Rss/" />
+<link rel="alternate" type="application/rss+xml" title="billmill.org RSS Feed" 
+	href="http://billmill.org/Rss/" />
+<link rel="alternate" type="application/xml" title="billmill.org Atom Feed" 
+	href="http://billmill.org/Atom/" />
 <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
 <link rel="icon" href="static/favicon.ico" type="image/x-icon">
 <link href="/static/styles.css" rel="stylesheet" type="text/css" />
