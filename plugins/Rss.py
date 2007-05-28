@@ -21,14 +21,15 @@ class EntryStruct(object):
 class Rss(object):
     #turn on etags, so we get last-modified
     _cp_config = {"tools.etags.on": True,
-        "tools.etags.autotags": True}
+        "tools.etags.autotags": True,
+        "tools.response_headers.on": True,
+        "tools.response_headers.headers": [('Content-Type', 'application/xml')]}
 
     def __init__(self, parent):
         pass
 
     @cpy.expose
     def index(self):
-        cpy.tools.response_headers.headers = [('Content-Type', "application/xml")]
         datadir = config('datadir')
         num_entries = config('num_entries', 10)
         entries = get_most_recent(datadir, num_entries)

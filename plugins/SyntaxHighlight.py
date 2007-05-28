@@ -11,6 +11,7 @@ syntax_style (string): Style to use for highlighting text. Check out the style
 import cherrypy as cpy
 import re
 import pygments
+from cgi import escape
 from pygments.lexers import get_lexer_by_name
 from pygments.formatters import HtmlFormatter
 from utils import config
