@@ -1,5 +1,5 @@
 <html><head>
-<link rel="alternate" type="application/xml" title="billmill.org Atom Feed" 
+<link rel="alternate" type="application/atom+xml" title="billmill.org Atom Feed" 
 	href="http://billmill.org/Atom/" />
 <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
 <link rel="icon" href="static/favicon.ico" type="image/x-icon">
