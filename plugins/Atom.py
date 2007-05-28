@@ -32,6 +32,7 @@ class Atom(object):
     def prepare_atom_template(self, entries):
         ns = cpy.config.get('/').copy()
         entry_structs = []
+        last_updated = ''
         for e in entries:
             es = EntryStruct()       
             es.title = e.title
@@ -41,7 +42,9 @@ class Atom(object):
             es.desc = fulltext
             es.text = fulltext
             es.time = time.strftime('%Y-%m-%dT%H:%M:%SZ', e.time_tuple)
+            if not last_updated: last_updated = es.time
             es.link = urljoin(config('base_url'), e.relpath + '.html')
             entry_structs.append(es)
+        ns['last_updated'] = last_updated
         ns['entries'] = entry_structs
         return ('atom', ns)

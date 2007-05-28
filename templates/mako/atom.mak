@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
+	<link rel="self" href="/Atom/" />
 	<id>${base_url}</id>
 	<title>${blog_title}</title>
 	<subtitle>${blog_desc}</subtitle>
-	<updated>TODO</updated>
+	<updated>${last_updated}</updated>
 	<author>
 		<name>${blog_author}</name>
 		<email>${blog_email}</email>
