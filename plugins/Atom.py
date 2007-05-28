@@ -37,9 +37,10 @@ class Atom(object):
         for e in entries:
             es = EntryStruct()       
             es.title = e.title
+            fulltext = escape(e.text)
             #If you only want short descriptions:
             #es.desc = escape(e.text[:255])
-            fulltext = escape(e.text)
+            #for full text descriptions:
             es.desc = fulltext
             es.text = fulltext
             es.time = time.strftime('%Y-%m-%dT%H:%M:%SZ', e.time_tuple)
