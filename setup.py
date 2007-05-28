@@ -14,5 +14,5 @@ setup(name='cherry_blossom',
         packages=['plugins'],
         include_package_data = True,
         license="Public Domain",
-        requires=["cherrypy>=3.0"]
+        requires=["cherrypy (>=3.0)"]
       )
