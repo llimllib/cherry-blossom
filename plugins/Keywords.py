@@ -27,7 +27,6 @@ class Keywords(object):
         elif len(args) < 1:
             return self.parent.error_page("Too few arguments to Keywords")
 
-        import pdb; pdb.set_trace()
         try:
             offset = int(kargs.get('offset', 0))
         except ValueError:

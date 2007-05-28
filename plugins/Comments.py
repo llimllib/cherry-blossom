@@ -138,7 +138,6 @@ class Comments(object):
             if len(deletes) == 0: return
             elif type(deletes) == type(''): deletes = [deletes]
 
-            import pdb; pdb.set_trace()
             for f in deletes:
                 self.delete(f)
 
