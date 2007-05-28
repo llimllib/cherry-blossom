@@ -24,5 +24,5 @@
 %endif
 
 %if context.get('keywordatom', None):
-  <a href="${keywordatom}">Atom feed for keyword</a>
+  <a href="${keywordatom}">Atom feed for keyword "${keyword}"</a>
 %endif

@@ -36,9 +36,9 @@ class Keywords(object):
         print "Key =  %s" % self.keyword
         
         #remember we're not sure if base_url has a trailing '/' or not...
-        if 'Rss' in config("plugins"):
+        if 'Atom' in config("plugins"):
             self.atom_link = config('base_url').rstrip('/') + \
-                '/Atom/keyword/' + self.keyword
+                '/Atom/keywords/' + self.keyword
         
         entries = get_entries_by_meta('keywords')
         entries = [e for e in entries if self.keyword in keysplit(e.metadata['keywords'])]
