@@ -23,6 +23,6 @@
     </div>
 %endif
 
-%if context.get('keywordrss', None):
-  <a href="${keywordrss}">Rss for keyword</a>
+%if context.get('keywordatom', None):
+  <a href="${keywordatom}">Atom feed for keyword</a>
 %endif

@@ -47,7 +47,7 @@ class Keywords(object):
 
     def cb_add_data(self):
         if self.atom_link:
-            return {'keywordrss': self.atom_link, 'keyword': self.keyword}
+            return {'keywordatom': self.atom_link, 'keyword': self.keyword}
 
     def cb_story(self, entry):
         """Add a $keywords variable to an entry which is a linkified,
