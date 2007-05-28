@@ -19,14 +19,16 @@ from utils import config
 CODE_RE = re.compile("<code (?:\s*lang=(.*?))*>(.*?)<(?#)/code>", re.S)
 
 class SyntaxHighlight(object):
-    def __init__(self, parent): pass
+    def __init__(self, parent):
+        #so that if cb_feed_render_story gets called before _story_start,
+        #we don't throw an error
+        self.render_css = True
 
     def cb_story_start(self, entries):
         self.render_css = True
 
-    #story is an Entry object
-    def cb_story(self, story):
-        for lang, code in CODE_RE.findall(story._text):
+    def highlight_code(self, textstr):
+        for lang, code in CODE_RE.findall(textstr):
             if not lang: lang = "python"
 
             try:
@@ -41,4 +43,17 @@ class SyntaxHighlight(object):
                 code = '<style type="text/css">%s</style>\n%s' % \
                     (formatter.get_style_defs(), code)
                 self.render_css = False
-            story._text = CODE_RE.sub(code, story._text, 1)
+            textstr = CODE_RE.sub(code, textstr, 1)
+        return textstr
+
+    #story is an Entry
+    def cb_feed_story(self, story):
+        #de-lazify the object
+        story.text
+        story._text = self.highlight_code(story._text)
+        
+    #story is an Entry object
+    def cb_story(self, story):
+        #de-lazify the object
+        story.text
+        story._text = self.highlight_code(story._text)

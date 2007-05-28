@@ -4,7 +4,7 @@ from cgi import escape
 from urllib import basejoin as urljoin
 
 from FileCabinet import get_most_recent, get_entries_by_meta
-from utils import config
+from utils import config, run_callback
 
 class EntryStruct(object):
     def __init__(self):
@@ -21,7 +21,8 @@ class Atom(object):
         "tools.response_headers.on": True,
         "tools.response_headers.headers": [('Content-Type', 'application/xml')]}
 
-    def __init__(self, parent): pass
+    def __init__(self, parent):
+        self.parent = parent
 
     @cpy.expose
     def index(self):
@@ -37,7 +38,13 @@ class Atom(object):
         for e in entries:
             es = EntryStruct()       
             es.title = e.title
+
+            #this callback gives any interested plugins the chance to change
+            #the text of a story, as presented in a feed. It gives an Entry
+            #object, and ignores any return value
+            run_callback(self.parent.plugins, "cb_feed_story", e)
             fulltext = escape(e.text)
+
             #If you only want short descriptions:
             #es.desc = escape(e.text[:255])
             #for full text descriptions:

@@ -116,9 +116,6 @@ class BlogRoot(object):
         page.extend(run_callback(self.plugins, 'cb_story_start', entries))
 
         for e in entries:
-            #it's a lazy object, but plugins may need the data, so let's load it
-            e.text
-
             #cb_story lets a plugin insert variables just for one particular
             #         entry. It is given the story object, and may modify it.
             run_callback(self.plugins, 'cb_story', e)

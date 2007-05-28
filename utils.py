@@ -18,7 +18,7 @@ def run_callback(plugins, callback, *args, **kwargs):
     for p in plugins:
         if hasattr(p, callback):
             returnval = getattr(p, callback)(*args, **kwargs)
-            dont_expand = [type({}), type(())]
+            dont_expand = [type({}), type(()), type("")]
             if returnval and type(returnval) in dont_expand:
                 datums.append(returnval)
             elif returnval:
