@@ -2,7 +2,7 @@ import re, os, time
 import cherrypy as cpy
 from urllib import basejoin as urljoin
 from FileCabinet import get_most_recent, get_entries_by_meta
-from utils import config
+from utils import config, run_callback
 
 #regex to strip HTML
 #HACK FIXME
@@ -26,7 +26,7 @@ class Rss(object):
         "tools.response_headers.headers": [('Content-Type', 'application/xml')]}
 
     def __init__(self, parent):
-        pass
+        self.parent = parent
 
     @cpy.expose
     def index(self):
@@ -55,6 +55,12 @@ class Rss(object):
             #XXX: what is the category tag? should keywords go here?
             es = EntryStruct()
             es.title = e.title
+
+            #this callback gives any interested plugins the chance to change
+            #the text of a story, as presented in a feed. It gives an Entry
+            #object, and ignores any return value
+            run_callback(self.parent.plugins, "cb_feed_story", e)
+
             #because <style> messed me up, I'm going to stop stripping
             #HTML out of my description. The RSS spec sucks.
             es.desc = e.text
