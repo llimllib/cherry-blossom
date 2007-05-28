@@ -49,3 +49,15 @@ class Atom(object):
         ns['last_updated'] = last_updated
         ns['entries'] = entry_structs
         return ('atom', ns)
+
+    @cpy.expose
+    def default(self, *args, **kwargs):
+        if args[0].lower().startswith('keyword') and len(args) > 1:
+            return self.keyword_atom(args[1])
+        else: return self.index()
+
+    def keyword_atom(self, kw):
+        num_entries = config('num_entries', 10)
+        entries = get_entries_by_meta('keywords')
+        entries = [e for e in entries if kw in e.metadata['keywords']]
+        return self.prepare_atom_template(entries[:num_entries])
