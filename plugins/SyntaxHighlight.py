@@ -22,12 +22,12 @@ class SyntaxHighlight(object):
     def __init__(self, parent):
         #so that if cb_feed_render_story gets called before _story_start,
         #we don't throw an error
-        self.render_css = True
+        self.render_css = False
 
     def cb_story_start(self, entries):
         self.render_css = True
 
-    def highlight_code(self, textstr):
+    def highlight_code(self, textstr, font_tags=False):
         for lang, code in CODE_RE.findall(textstr):
             if not lang: lang = "python"
 
@@ -36,7 +36,7 @@ class SyntaxHighlight(object):
             except ClassNotFound:
                 return
             formatter = HtmlFormatter(style=config("syntax_style", "default", 
-                "SyntaxHighlight"))
+                "SyntaxHighlight"), noclasses=font_tags)
             code = pygments.highlight(code, lexer, formatter)
 
             if self.render_css:
@@ -50,7 +50,7 @@ class SyntaxHighlight(object):
     def cb_feed_story(self, story):
         #de-lazify the object
         story.text
-        story._text = self.highlight_code(story._text)
+        story._text = self.highlight_code(story._text, True)
         
     #story is an Entry object
     def cb_story(self, story):
