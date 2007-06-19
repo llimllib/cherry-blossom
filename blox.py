@@ -76,7 +76,8 @@ class BlogRoot(object):
                 cpy.log("%s" % sys.exc_info()[0])
                 cpy.log("%s" % traceback.format_exc())
 
-    def error_page(self, error):
+    def error_page(self, error, status=404):
+        cpy.response.status = status
         ns = cpy.config.get('/')
         ns.update({'error': error})
         return (('head', ns), ('error', ns), ('foot', ns))
@@ -188,7 +189,7 @@ class BlogRoot(object):
         e = FileCabinet.get_one(fname, self.datadir)
         if e:
             return self.render_page([e])
-        return self.error_page('Page Not Found')
+        return self.error_page('Page Not Found', 404)
 
 if __name__ == '__main__':
     #set our current directory to the dir with blox.py in it
