@@ -46,7 +46,7 @@ class SyntaxHighlight(object):
             textstr = CODE_RE.sub(code, textstr, 1)
         return textstr
 
-    #story is an Entry
+    #story is an Entry object
     def cb_feed_story(self, story):
         #de-lazify the object
         story.text
