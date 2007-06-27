@@ -4,6 +4,7 @@
 <link rel="shortcut icon" href="static/favicon.ico" type="image/x-icon">
 <link rel="icon" href="static/favicon.ico" type="image/x-icon">
 <link href="/static/styles.css" rel="stylesheet" type="text/css" />
+<link href="/static/code.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
 <title>${blog_title} - ${context.get('title', '')}</title>
