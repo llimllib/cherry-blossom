@@ -59,6 +59,9 @@ directories='templates/mako'
 ### And where to output its compiled modules
 module_directory='templates/mako'
 
+### This should be the same as blog_encoding
+mako.output_encoding='utf-8'
+
 ### This section creates a static directory at base_url/static; to turn this off,
 ### simply change True to False or comment out that line
 [/static]
