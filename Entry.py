@@ -41,14 +41,10 @@ class Entry(object):
         #don't, however, want to
         #store the text of the file in memory until it is requested at least
         #once, to save on memory if there's lots of entries. Better ideas?
-        #cpy.log("Parsing metadata for file %s" % self.filename)
         f = open(self.filename, encoding=self._encoding)
-        #f = open(self.filename)
 
         #title must be the first line of the file
         self._title = f.readline().strip()
-        #if 'Unicode' in self._title:
-        #    import pdb; pdb.set_trace()
 
         #metadata lines must follow the title line immediately and begin with a 
         #hash
@@ -71,9 +67,6 @@ class Entry(object):
                 self.time = time.mktime(self.time_tuple)
                 get_mtime = False
             except ValueError:
-                #cpy.log(
-                #    'file %s has an invalid time format - using mtime instead' 
-                #    % self.filename)
                 pass
         if get_mtime:
             self.time = os.stat(self.filename)[8]
@@ -83,9 +76,7 @@ class Entry(object):
     def gettext(self):
         '''return the file minus the first line'''
         if not self.reload_flag:
-            #cpy.log('getting text of %s' % self.filename)
             txt = open(self.filename, 'r', self._encoding).readlines()
-            #txt = open(self.filename).readlines()
             self.reload_flag = 1
             if len(txt) > 2:
                 i = 1
