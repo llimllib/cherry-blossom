@@ -17,6 +17,8 @@ body code {
 .highlight {
     border:1px dashed;
     padding-left: 5px;
+    margin-left: -5px;
+    margin-right: -15px;
     font-size:12px;
 }
 #box {
