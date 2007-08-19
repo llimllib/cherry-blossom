@@ -14,14 +14,15 @@
     <ul id="right-navlist">
         <li>
         <a href="/">blog</a> &bull;
+        <a href="http://groups.google.com/group/billmillorg-discussion/topics?hl=en">discuss</a> &bull;
         <a href="/code.html">code</a> &bull;
         <a href="http://flickr.com/photos/llimllib">photos</a> &bull;
         <a href="/Atom/">Atom</a> &bull;
         <a href="http://www.last.fm/user/llimllib">music</a> &bull;
         <a href="http://del.icio.us/llimllib">bookmarks</a> &bull;
         <a href="http://bloglines.com/public/llimllib">blogroll</a> &bull;
-        <a href="http://reddit.com/user/llimllib">reddit</a>&bull;
-        <a href="http://billmill.org/static/medmen">Medicine Men Ultimate</a>&bull;
+        <a href="http://reddit.com/user/llimllib">reddit</a> &bull;
+        <a href="http://billmill.org/static/medmen">Medicine Men Ultimate</a> &bull;
         <a href="mailto:bill.mill@gmail.com">email</a>
         </li>
     </ul>
