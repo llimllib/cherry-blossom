@@ -20,6 +20,7 @@ body code {
     margin-left: -5px;
     margin-right: -12px;
     font-size:12px;
+    text-align:left;
 }
 #box {
 	width: 782px;
