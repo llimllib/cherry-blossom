@@ -11,9 +11,8 @@
     <div id="logo">
         <img src="/static/billmill_blu.gif">
     </div>
-    <ul id="right-navlist">
-        <li>
-        <a href="/">blog</a> &bull;
+    <div id="right-navlist">
+        <a href="/">blog</a> &bull; 
         <a href="http://groups.google.com/group/billmillorg-discussion/topics?hl=en">discuss</a> &bull;
         <a href="/code.html">code</a> &bull;
         <a href="http://flickr.com/photos/llimllib">photos</a> &bull;
@@ -24,8 +23,7 @@
         <a href="http://reddit.com/user/llimllib">reddit</a> &bull;
         <a href="http://billmill.org/static/medmen">Medicine Men Ultimate</a> &bull;
         <a href="mailto:bill.mill@gmail.com">email</a>
-        </li>
-    </ul>
+    </div>
 </div><!-- end side navigaion -->
 
 <!-- begin more info -->
