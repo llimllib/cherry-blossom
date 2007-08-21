@@ -88,12 +88,10 @@ a:hover{
 	line-height: 20px;
 	margin: -4px 0px 10px 0px;
 	padding:0;
-	list-style-type: none;
 	border: 1px none #BB7D88;
 	color: #02486C;
 }
 #right-navlist a {
-	width: 99.99%;
 	border-bottom: 1px solid #bfcdda;
 	text-align: left;
 	text-decoration: none;
