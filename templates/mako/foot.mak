@@ -36,7 +36,7 @@
         Python.
         </p>
 		<div id="blog-buttons">
-			<p><a href="http://ronpaul2008.com"><img border=0 src="static/ronpaul.png"></a></p>
+			<p><a href="http://ronpaul2008.com"><img border=0 src="/static/ronpaul.png"></a></p>
 		</div>
 </div><!-- end more info -->
 
