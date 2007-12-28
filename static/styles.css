@@ -62,6 +62,11 @@ a:hover{
     color:#02486C;
     text-align:left;
 }
+#footnote h2 {
+    margin:50px 0px 8px 0px;
+    color:#02486C;
+    text-align:left;
+}
 #main h3 {
     text-size: 60%;
     margin: 8px 0px 8px 10px;
