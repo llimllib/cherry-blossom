@@ -43,11 +43,11 @@ a:hover{
 	font-size: .75em;
 	line-height: 1.7em;
 	padding: 1px;
-    padding-left: 20px;
+    padding-left: 22px;
 	margin-top: 0px;
 	border: thin none #FF0000;
 	float: left;
-	width: 600px;
+	width: 592px;
 }
 #main h1 {
 	text-transform:uppercase;
@@ -81,7 +81,7 @@ a:hover{
 	width:180px;
 	margin:0px 0px 0px 610px;
 	border: 2px none #FFFFFF;
-	padding: 0px;
+    padding-left:10px;
 }
 #logo {
     margin-left: 10px;
