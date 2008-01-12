@@ -7,7 +7,9 @@ from utils import config, run_callback
 
 class BlogRoot(object):
     _cp_config = {"tools.buffet.on": True,
-                  "tools.staticdir.root": os.path.abspath(os.curdir)}
+                  "tools.staticdir.root": os.path.abspath(os.curdir),
+                  "tools.encode.on": True,
+                  "tools.encode.encoding": config("blog_encoding", "utf-8")}
 
     def __init__(self):
         self.months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
@@ -20,7 +22,9 @@ class BlogRoot(object):
         #turn on the templating engine
         cpy.tools.buffet = BuffetTool(config("template_engine"))
 
-        #and make the static root into the cd
+        #set the output encoding
+        self._cp_config["cpy.tools.encode.encoding"] = "utf-8"
+
         self.now = datetime.datetime.now
         self.last_update = self.now()
         self.num_entries = config('num_entries')
