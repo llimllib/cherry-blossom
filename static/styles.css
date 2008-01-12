@@ -7,7 +7,7 @@ body {
 	background-color: #ACB5B4;
 	font-family: Verdana, Arial, Helvetica, sans-serif;
 	font-size: 100.01%;
-	background-image: url(back2.gif);
+	background-image: url(back4.gif);
 	background-repeat: repeat-y;
 	background-position: 50% 0px;
 }
@@ -18,12 +18,12 @@ body code {
     border:1px dashed;
     padding-left: 5px;
     margin-left: -5px;
-    margin-right: -12px;
+    xmargin-right: -12px;
     font-size:12px;
     text-align:left;
 }
 #box {
-	width: 782px;
+	width: 820px;
 	margin-right: auto;
 	margin-left: auto;
 	text-align: left;
@@ -47,7 +47,7 @@ a:hover{
 	margin-top: 0px;
 	border: thin none #FF0000;
 	float: left;
-	width: 550px;
+	width: 600px;
 }
 #main h1 {
 	text-transform:uppercase;
@@ -79,7 +79,7 @@ a:hover{
 }
 #right-menu {
 	width:180px;
-	margin:0px 0px 0px 583px;
+	margin:0px 0px 0px 610px;
 	border: 2px none #FFFFFF;
 	padding: 0px;
 }
