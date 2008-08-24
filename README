@@ -1,0 +1,23 @@
+Cherry Blossom is a blogging system written in Python. It was written specifically because I had a lot of pyblosxom blog entries on my previous blog, but I wanted to use cherrypy instead of plain-ol cgi. It adds features like object publishing, session support, access to lots of cherrypy plugins, access to GET and POST vars as method parameters, and others.
+
+This software's been running my blog for over a year now, and has survived a couple redditings and a flood from stumbleupon, all without a hiccup. 
+
+Why You Should Use It
+
+1. Simplicity.
+
+2. Simplicity.
+
+3. Very like pybloxsom in its design, but unlike it because it runs on a modern app server (cherrypy), which gives you much more power than CGI.
+
+4. No database!
+
+5. It's fast.
+
+6. It's stable - I've been running and developing it for over a year at this point, with very few glitches.
+
+7. It's designed for developers.
+
+8. It's already got lots of plugins, and they're all readable.
+
+8. Simplicity! You can pick it up and grok it in an afternoon, and write your own useful plugins with as little as 5 lines of code.
