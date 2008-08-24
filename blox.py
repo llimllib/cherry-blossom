@@ -102,7 +102,8 @@ class BlogRoot(object):
             ns['offset_next'] = offset + ns['num_entries']
 
         #cb_add_data is the plugin's chance to add data to the story template
-        #            it should return a list of
+        #            it should return a list of dictionaries
+        #XXX: really? a list of dicts? why not one dict?
         for dict_ in run_callback(self.plugins, 'cb_add_data'):
             for key, val in dict_.iteritems():
                 ns[key] = val
