@@ -8,7 +8,6 @@ class PythonRuby:
 
     @cpy.expose
     def index(self):
-        import pdb; pdb.set_trace()
         return TemplateLookup(directories=[dirname(__file__)]) \
                     .get_template("pyruby.mak")                \
                     .render()
