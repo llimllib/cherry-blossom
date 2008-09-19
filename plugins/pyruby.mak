@@ -68,6 +68,12 @@ ${pycode()}>>> int("42")
 ${rubycode()}>>> "42".to_i
 => 42
 
+${explain("dir()","Use Ruby's <code>methods()</code> method where you'd use Python's <code>dir()</code>")}
+${pycode()}>>> dir(12)
+['__abs__', '__add__', '__and__', ...]
+${rubycode()}>>> 12.methods()
+=> ["method", "%", "between?", "send", ...]
+
 ${explain("unpacking","You may unpack lists in Ruby just like in Python")}
 ${pycode()}>>> a,b = [42, 43]
 >>> a
@@ -77,13 +83,23 @@ ${pycode()}>>> a,b = [42, 43]
 ${rubycode()}>>> a,b = [42, 43]
 => [42, 43]
 >>> a
-42
+=> 42
 >>> b
-43
+=> 43
 
 ${explain("tuples","Ruby has no concept of tuples; simply use lists for the same purpose")}
 ${pycode()}("spam", 42)
 ${rubycode()}["emerald", 42]
+
+${explain("Dictionaries","Ruby spells dictionary \"Hash\". You must call the Hash constructor with square brackets instead of parens.")}
+${pycode()}>>> {1: 2, "alpha": "beta"}
+{1: 2, "alpha": "beta"}
+>>> dict([(1,2), ("alpha", "beta")])
+{1: 2, 'alpha': 'beta'}
+${rubycode()}>>> {1=> 2, "alpha"=> "beta"}
+=> {"alpha"=>"beta", 1=>2}
+>>> Hash[1, 2, "alpha", "beta"]
+=> {"alpha"=>"beta", 1=>2}
 
 ${explain("Functions", """Simple functions are defined almost identically by ruby and python. In ruby, whitespace
 is not significant, and empty functions simply return nil.""")}
