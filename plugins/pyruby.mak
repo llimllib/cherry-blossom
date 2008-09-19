@@ -101,6 +101,16 @@ ${rubycode()}>>> {1=> 2, "alpha"=> "beta"}
 >>> Hash[1, 2, "alpha", "beta"]
 => {"alpha"=>"beta", 1=>2}
 
+${explain("tuple and list access","You may access elements of lists and hashes with square brackets, just like in python")}
+${pycode()}>>> [1,2,3,4,5][2]
+3
+>>> {1: 2, "alpha": "beta"}["alpha"]
+"beta"
+${rubycode()}>>> [1,2,3,4,5][2]
+=> 3
+>>> {1: 2, "alpha": "beta"}["alpha"]
+=> "beta"
+
 ${explain("Functions", """Simple functions are defined almost identically by ruby and python. In ruby, whitespace
 is not significant, and empty functions simply return nil.""")}
 ${pycode()}
@@ -181,6 +191,16 @@ end
 
 >>> f(*[1,2,3])
 => 6
+
+${explain("Keyword Arguments","Ruby has no concept of keyword parameters; instead, one often passes a hash of options to a function.")}
+${pycode()}def f(a="b", c="d", e="f"):
+    if a: return 1
+    if b: return 2
+    if c: return 3
+${rubycode()}def f(params)
+    if params[:a]; 1; end
+    if params[:b]; 2; end
+    if params[:c]; 3; end
 
 </td></tr>
 </table>
