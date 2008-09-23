@@ -1,3 +1,11 @@
+<!--TODO
+* Explain symbols
+* improve code sample typography
+  * large space between [ and start of list
+  * difficult to tell } from )
+* break out into pages
+* create a TOC
+-->
 <%def name="explain(header, text)">
 </pre><tr><td colspan="2">
 % if 0:
@@ -86,6 +94,11 @@ ${rubycode()}>>> a,b = [42, 43]
 => 42
 >>> b
 => 43
+
+${explain("conditional assignment","Python has no operator equivalent to ruby's conditional assignment operator")}
+${pycode()}if not x:
+    x = 12
+${rubycode()}x ||= 12
 
 ${explain("tuples","Ruby has no concept of tuples; simply use lists for the same purpose")}
 ${pycode()}("spam", 42)
@@ -193,14 +206,14 @@ end
 => 6
 
 ${explain("Keyword Arguments","Ruby has no concept of keyword parameters; instead, one often passes a hash of options to a function.")}
-${pycode()}def f(a="b", c="d", e="f"):
-    if a: return 1
-    if b: return 2
-    if c: return 3
+${pycode()}def f(a=1, b=2, c=3):
+	return a + b + c
 ${rubycode()}def f(params)
-    if params[:a]; 1; end
-    if params[:b]; 2; end
-    if params[:c]; 3; end
+    params[:a] ||= 1
+	params[:b] ||= 2
+	params[:c] ||= 3
+
+	params[:a] + params[:b] + params[:c]
 
 </td></tr>
 </table>
