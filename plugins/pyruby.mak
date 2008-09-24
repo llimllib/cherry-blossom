@@ -1,11 +1,20 @@
 <!--TODO
+* write an intro
 * Explain symbols
 * improve code sample typography
   * large space between [ and start of list
   * difficult to tell } from )
 * break out into pages
 * create a TOC
+* fix HTML output (it works-ish now, but creates crappy HTML)
+* list comprehensions
+    * select/find_all/each/inject
+* ! and ? methods
+* <=> operator
+* ranges (.. and ... operators)
+* lack of nested functions
 -->
+
 <%def name="explain(header, text)">
 </pre><tr><td colspan="2">
 % if 0:
@@ -46,6 +55,12 @@ thirteen
 ${explain("comments","Ruby comments begin with hashmarks and extend to the end of the line, just like in python")}
 ${pycode()}#this is a comment to the end of the line
 ${rubycode()}#so is this
+
+${explain("assignment","""Assignments in ruby return a value. When showing interactive Ruby in this document
+I will often omit these return values for clarity.""")}
+${pycode()}>>> x = 12
+${rubycode()}>>> x = 12
+=> 12
 
 ${explain("boolean", """Ruby has boolean objects <code>true</code> and <code>false</code>""")}
 ${pycode()}>>> 42 == 42
@@ -123,6 +138,47 @@ ${rubycode()}>>> [1,2,3,4,5][2]
 => 3
 >>> {1: 2, "alpha": "beta"}["alpha"]
 => "beta"
+
+${explain("id","Ruby's equivalent of Python's built-in <code>id()</code> function is the <code>object_id</code> method")}
+${pycode()}>>> x = "spam"
+>>> id(x)
+19923360
+${rubycode()}>>> x = "diamond"
+=> "diamond"
+>>> x.method_id
+=> 192042
+
+${explain("strings","Ruby has mutable strings, while Python has immutable ones")}
+${pycode()}>>> x = "spam"
+>>> y = x
+>>> x[1] = "c"
+>>> x
+"scam"
+>>> y
+"spam"
+${rubycode()}>>> x = "opal"
+>>> y = x
+>>> x[1] = "c"
+>>> x
+=> "ocal"
+>>> y
+=> "ocal"
+
+${explain("symbols","""Ruby has a concept of \"symbols\", which are somewhat like 
+<a href=\"http://docs.python.org/lib/non-essential-built-in-funcs.html\">interned</a> strings. Note that
+python automatically interns strings which look like identifiers, which can be a bit surprising.""")}
+${pycode()}>>> a = "!"
+>>> b = "!"
+>>> c = intern("!")
+>>> d = intern("!")
+>>> id(a) != id(b) and id(c) == id(d)
+True
+${rubycode()}>>> a = "topaz"
+>>> b = "topaz"
+>>> c = :topaz
+>>> d = :topaz
+>>> a.object_id != b.object_id && c.object_id == d.object_id
+=> true
 
 ${explain("Functions", """Simple functions are defined almost identically by ruby and python. In ruby, whitespace
 is not significant, and empty functions simply return nil.""")}
@@ -214,6 +270,37 @@ ${rubycode()}def f(params)
 	params[:c] ||= 3
 
 	params[:a] + params[:b] + params[:c]
+
+${explain("blocks", """A Ruby block is just an anonymous function. One way to create one is with curly braces
+delimiting the block and pipes delimiting the function's argument. A block may not be passed inside parentheses.""")}
+${pycode()}>>> x = [['a', 99], ['a', 1]]
+>>> x.sort(lambda x, y: cmp(x[1], y[1]))
+>>> x
+[['a', 1], ['a', 99]]
+${rubycode()}>>> [['a', 99], ['a', 1]].sort {|x,y| x[1] <=> y[1]} 
+=> [["a", 1], ["a", 99]]
+>>> [['a', 99], ['a', 1]].sort({|x,y| x[1] <=> y[1]})
+SyntaxError: compile error
+
+${explain("blocks contd", """There is an alternative, equivalent, "do/end" syntax for blocks. Recall that parentheses
+on Ruby functions are usually optional""")}
+${pycode()}>>> x = [['a', 99], ['a', 1]]
+>>> x.sort(lambda x, y: cmp(x[1], y[1]))
+>>> x
+[['a', 1], ['a', 99]]
+${rubycode()}>>> [['a', 99], ['a', 1]].sort do |x,y|
+    x[1] <=> y[1]
+end
+=> [["a", 1], ["a", 99]]
+
+${explain("List Comprehensions","""There is no exact equivalent to python's list comprehensions in Ruby. A few
+examples and equivalents follow:""")}
+${pycode()}[x**2 for x in range(6)]
+[x**2 for x in range(6) if x%2 == 0]
+[x+y for x in ["a", "b", "c"] for y in ["d", "e"]]
+${rubycode()}(1...6).map { |x| x**2 }
+(1...6).select({|x| x%2 == 0}).map({|x| x**2})
+["a", "b", "c"].map {|x| ["d", "e"].map {|y| x+y}}.flatten
 
 </td></tr>
 </table>
