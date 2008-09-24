@@ -4,6 +4,7 @@
 * improve code sample typography
   * large space between [ and start of list
   * difficult to tell } from )
+  * = looks like -
 * break out into pages
 * create a TOC
 * fix HTML output (it works-ish now, but creates crappy HTML)
@@ -274,12 +275,15 @@ ${rubycode()}def f(params)
 ${explain("blocks", """A Ruby block is just an anonymous function. One way to create one is with curly braces
 delimiting the block and pipes delimiting the function's argument. A block may not be passed inside parentheses.""")}
 ${pycode()}>>> x = [['a', 99], ['a', 1]]
+
 >>> x.sort(lambda x, y: cmp(x[1], y[1]))
 >>> x
 [['a', 1], ['a', 99]]
-${rubycode()}>>> [['a', 99], ['a', 1]].sort {|x,y| x[1] <=> y[1]} 
+${rubycode()}>>> x = [['a', 99], ['a', 1]]
+
+>>> x.sort {|x,y| x[1] <=> y[1]} 
 => [["a", 1], ["a", 99]]
->>> [['a', 99], ['a', 1]].sort({|x,y| x[1] <=> y[1]})
+>>> x.sort({|x,y| x[1] <=> y[1]})
 SyntaxError: compile error
 
 ${explain("blocks contd", """There is an alternative, equivalent, "do/end" syntax for blocks.""")}
