@@ -282,8 +282,7 @@ ${rubycode()}>>> [['a', 99], ['a', 1]].sort {|x,y| x[1] <=> y[1]}
 >>> [['a', 99], ['a', 1]].sort({|x,y| x[1] <=> y[1]})
 SyntaxError: compile error
 
-${explain("blocks contd", """There is an alternative, equivalent, "do/end" syntax for blocks. Recall that parentheses
-on Ruby functions are usually optional""")}
+${explain("blocks contd", """There is an alternative, equivalent, "do/end" syntax for blocks.""")}
 ${pycode()}>>> x = [['a', 99], ['a', 1]]
 >>> x.sort(lambda x, y: cmp(x[1], y[1]))
 >>> x
