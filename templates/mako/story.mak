@@ -1,6 +1,5 @@
     <div id="entry">
-    <h1>${title}
-<br>${tmstr}</h1><br>
+    <h1>${title}</h1>
 ${text}
 <p>
 

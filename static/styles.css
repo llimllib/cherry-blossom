@@ -1,5 +1,31 @@
 @import url("http://yui.yahooapis.com/2.6.0/build/reset-fonts-grids/reset-fonts-grids.css");
 
+a:link {color: #000;}
+
 body {
-    font-size: 62.5%
+    margin-top: 10px;
+    font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
+}
+
+#bd {
+    float:right;
+}
+
+#bd h1 {
+    font-family: Geneva, Tahoma, sans-serif;
+    font-size: 138.5%;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+#bd h2 {
+    font-family: Geneva, Tahoma, sans-serif;
+    color: #aaa;
+    font-size: 100%;
+    margin-top: 3px;
+}
+
+
+.yui-g {
+    font-size: 108%;
 }

@@ -1,3 +1,5 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <html><head>
 <link rel="alternate" type="application/atom+xml" title="billmill.org Atom Feed" 
 	href="http://billmill.org/Atom/" />
@@ -10,8 +12,8 @@
 <title>${blog_title} - ${context.get('title', '')}</title>
 </head>
 <body>
-   <div id="hd"><h1>Bill Mill</h1> blog | code | elsewhere </div>
-
-<div id="doc" class="yui-t7">
+<div id="doc" class="yui-t1">
+   <div id="hd"></div>
    <div id="bd">
-	<div class="yui-g">
+   	<div id="yui-main">
+	<div class="yui-b"><div class="yui-g">

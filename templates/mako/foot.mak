@@ -18,7 +18,17 @@
         &nbsp; &nbsp;
     </div>
 %endif
-	</div></div> <!-- end bd and yui-g -->
+
+	</div></div></div> <!-- end yui-g, yui-b, yui-main -->
+	
+	<div class="yui-b"><img src="static/logo.png" id="logo" /><br>
+   	<a href="mailto:bill.mill@gmail.com">contact</a> |
+	<a href="elsewhere.html">elsewhere</a>
+	</div>
+
+	</div> <!-- end bd -->
+
+
 	<div id="ft">footer</div>
 </div> <!-- end yui-t7 -->
 </body>
