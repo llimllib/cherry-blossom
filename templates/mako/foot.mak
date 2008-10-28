@@ -21,9 +21,12 @@
 
 	</div></div></div> <!-- end yui-g, yui-b, yui-main -->
 	
-	<div class="yui-b"><img src="static/logo.png" id="logo" /><br>
-   	<a href="mailto:bill.mill@gmail.com">contact</a> |
-	<a href="elsewhere.html">elsewhere</a>
+	<div class="yui-b"><!--<img src="static/logo.png" id="logo" />-->
+	<!--<img src="static/fire_smallish.jpg" id="logo" />-->
+
+	<p id="about">
+	<a href="about.html">Bill Mill</a>
+	</p>
 	</div>
 
 	</div> <!-- end bd -->

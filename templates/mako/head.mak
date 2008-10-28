@@ -12,7 +12,7 @@
 <title>${blog_title} - ${context.get('title', '')}</title>
 </head>
 <body>
-<div id="doc" class="yui-t1">
+<div id="doc2" class="yui-t1">
    <div id="hd"></div>
    <div id="bd">
    	<div id="yui-main">

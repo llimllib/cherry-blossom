@@ -3,9 +3,7 @@
 ${text}
 <p>
 
-[<a href="${base_url}${relpath}.html" title="permalink">#</a>
-<a href="http://groups.google.com/group/billmillorg-discussion/topics?hl=en"
-title="discuss">&#x25B7;</a>]
+<a href="${base_url}${relpath}.html" id="permalink">#permalink</a>
 
 ${context.get('keywords', '')}
 </div>
