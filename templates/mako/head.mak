@@ -10,21 +10,8 @@
 <title>${blog_title} - ${context.get('title', '')}</title>
 </head>
 <body>
+   <div id="hd"><h1>Bill Mill</h1> blog | code | elsewhere </div>
 
-<div id="box"><!-- Begin Container Box -->
-<!--<div id="header"></div>-->
-<div id="main"><!-- Begin Main Content -->
-
-%if context.get('offset') and offset > 0:
-    <div id="prev-button">
-		%if offset == num_entries:
-			<a href="${pagename}">previous ${num_entries} &lt;&lt;</a><br>
-		%else:
-			<a href="${pagename}?offset=${offset - num_entries}">previous ${num_entries} &lt;&lt;</a><br>
-		%endif
-    </div>
-%endif
-
-%if context.get('keywordatom', None):
-  <a href="${keywordatom}">Atom feed for keyword "${keyword}"</a>
-%endif
+<div id="doc" class="yui-t7">
+   <div id="bd">
+	<div class="yui-g">
