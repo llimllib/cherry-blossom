@@ -26,7 +26,7 @@ body {
     margin-bottom: 5px;
 }
 
-#bd h3 a {
+#bd h3, a {
     font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
     font-size: 77;
     color: #666;

@@ -22,7 +22,7 @@
 	</div> <!-- end yui-g -->
 	</div> <!-- end bd -->
 
-	<div id="ft">footer</div>
+	<div id="ft"></div>
 </div> <!-- end yui-t7 -->
 </body>
 </html>
