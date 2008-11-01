@@ -1,5 +1,5 @@
     <div id="entry">
-    <h1>${title}</h1>
+    <h1><a href="${base_url}${relpath}.html">${title}</a></h1>
 ${text}
 <p>
 

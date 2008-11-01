@@ -18,8 +18,17 @@ body {
     font-family: Geneva, Tahoma, sans-serif;
     font-size: 153.9%;
     margin-bottom: 20px;
+    color: #000;
+}
+
+#bd h1 a:link, h1 a:visited {
+    color: #000;
     text-decoration:none;
 }
+
+/* #bd h1 a:visited {
+    color: #000;
+} */
 
 #bd h2 {
     font-family: Geneva, Tahoma, sans-serif;
@@ -30,11 +39,11 @@ body {
 #bd h3, a {
     font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
     font-size: 77;
-    color: #666;
+    color: #888;
 }
 
-h3 a:link, a:visited {
-    color: #666
+h3 a:link {
+    color: #888;
 }
 
 #about {
