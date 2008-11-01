@@ -19,18 +19,8 @@
     </div>
 %endif
 
-	</div></div></div> <!-- end yui-g, yui-b, yui-main -->
-	
-	<div class="yui-b"><!--<img src="static/logo.png" id="logo" />-->
-	<!--<img src="static/fire_smallish.jpg" id="logo" />-->
-
-	<p id="about">
-	<a href="about.html">Bill Mill</a>
-	</p>
-	</div>
-
+	</div> <!-- end yui-g -->
 	</div> <!-- end bd -->
-
 
 	<div id="ft">footer</div>
 </div> <!-- end yui-t7 -->

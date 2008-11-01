@@ -1,3 +1,4 @@
+/* see http://developer.yahoo.com/yui/fonts/ */
 @import url("http://yui.yahooapis.com/2.6.0/build/reset-fonts-grids/reset-fonts-grids.css");
 
 a:link {color: #000;}
@@ -25,14 +26,15 @@ body {
     margin-bottom: 5px;
 }
 
+#bd h3 a {
+    font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
+    font-size: 77;
+    color: #666;
+}
+
 #about {
     margin-top: -5px;
     color: #333;
-}
-
-#permalink {
-    color: #666;
-    text-align: right;
 }
 
 #about a:link {color: #888;}

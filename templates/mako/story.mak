@@ -3,7 +3,7 @@
 ${text}
 <p>
 
-<a href="${base_url}${relpath}.html" id="permalink">#permalink</a>
+<h3>By <a href="mailto:bill.mill@gmail.com">Bill Mill</a>. <a href="${base_url}${relpath}.html" id="permalink" title="permalink">#</a></h3>
 
 ${context.get('keywords', '')}
 </div>

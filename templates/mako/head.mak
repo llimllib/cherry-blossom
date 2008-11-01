@@ -12,8 +12,10 @@
 <title>${blog_title} - ${context.get('title', '')}</title>
 </head>
 <body>
-<div id="doc2" class="yui-t1">
-   <div id="hd"></div>
+<div style="text-align: left; float:left;">
+<!-- TODO maybe some nifty nav here -->
+</div>
+<div id="doc" class="yui-t7">
+   <div id="hd"><!--I have no header--></div>
    <div id="bd">
-   	<div id="yui-main">
-	<div class="yui-b"><div class="yui-g">
+   	<div id="yui-g">
