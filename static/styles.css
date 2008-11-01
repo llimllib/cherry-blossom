@@ -5,7 +5,7 @@ a:link {color: #000;}
 a:visited {color: #000;}
 
 body {
-    margin-top: 10px;
+    margin-top: 25px;
     font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
     line-height: 160%;
 }
@@ -17,7 +17,8 @@ body {
 #bd h1 {
     font-family: Geneva, Tahoma, sans-serif;
     font-size: 153.9%;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    text-decoration:none;
 }
 
 #bd h2 {
@@ -30,6 +31,10 @@ body {
     font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
     font-size: 77;
     color: #666;
+}
+
+h3 a:link, a:visited {
+    color: #666
 }
 
 #about {
