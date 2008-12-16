@@ -12,8 +12,6 @@ class BlogRoot(object):
                   "tools.encode.encoding": config("blog_encoding", "utf-8")}
 
     def __init__(self):
-        self.months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug',
-            'sep', 'oct', 'nov', 'dec']
         self.timeformats =  [["%Y", "%d", "%m", "%b", "%B"],
             ["%Y %b", "%Y %m", "%Y %b", "%Y %B", "%m %d", "%b %d", "%B %d"],
             ["%Y %m %d", "%Y %b %d", "%Y %B %d"]]
