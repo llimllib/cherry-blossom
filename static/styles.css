@@ -1,61 +1,52 @@
-/* see http://developer.yahoo.com/yui/fonts/ */
-@import url("http://yui.yahooapis.com/2.6.0/build/reset-fonts-grids/reset-fonts-grids.css");
-
 a:link {color: #000;}
 a:visited {color: #000;}
 
 body {
-    margin-top: 25px;
-    font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
-    line-height: 160%;
+    margin-left: 0px;
+    margin-top: 0px;
+    /* font-family: Cambria,Georgia,Times New Roman,Calibri,serif; */
+    font-family:palatino,georgia,verdana,arial,sans-serif;
+    line-height: 1.4em;
+    background-color: #f6f6f6;
 }
 
-#bd {
-    float:right;
+#main {
+    margin-left: 15px;
 }
 
-#bd h1 {
-    font-family: Geneva, Tahoma, sans-serif;
-    font-size: 153.9%;
-    margin-bottom: 20px;
-    color: #000;
+h1 {
+    font-size: 26px;
+    padding-left: 0px;
 }
 
-#bd h1 a:link, h1 a:visited {
+h1 a, h1 a:visited {
     color: #000;
     text-decoration:none;
 }
 
-#bd h2 {
+h2 {
     font-family: Geneva, Tahoma, sans-serif;
     font-size: 123.1%;
-    margin-bottom: 5px;
 }
 
-#bd h3, a {
+h3 {
     font-family: Cambria,Georgia,Times New Roman,Calibri,serif;
-    font-size: 77;
+    font-size: 77%;
     color: #888;
 }
 
-h3 a:link {
+h3 a {
     color: #888;
 }
 
-#about {
-    margin-top: -5px;
-    color: #333;
+a:visited {
+    color: #888;
 }
 
-#about a:link {color: #888;}
-a:visited {color: #888;}
-
-p {
-    padding: 5px;
-}
-
-#entry {
-    margin-bottom: 60px;
+blockquote {
+    padding-top: 5px;
+    padding-left: 10px;
+    background-color: #ddd;
 }
 
 pre {
@@ -65,8 +56,26 @@ pre {
     padding-left: 10px;
     padding-bottom: 5px;
     background-color: #eee;
+    line-height: 110%;
 }
 
-.yui-g {
-    font-size: 108%;
+div {
+    margin-bottom:1.6em;
+}
+
+#entry {
+    margin-bottom:3.2em;
+}
+
+#nav {
+    width: 248px;
+    background-color:#f6f6f6;
+    padding-left:10px;
+    padding-bottom:3px;
+    margin-top:5px;
+    color: #aaa;
+}
+
+#nav a, #nav a:visited, #nav a:hover, #nav p {
+    color: #888;
 }

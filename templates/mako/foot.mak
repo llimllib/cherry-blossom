@@ -19,10 +19,6 @@
     </div>
 %endif
 
-	</div> <!-- end yui-g -->
-	</div> <!-- end bd -->
-
-	<div id="ft"></div>
-</div> <!-- end yui-t7 -->
+</div>
 </body>
 </html>
