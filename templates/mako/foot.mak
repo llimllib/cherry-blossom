@@ -1,11 +1,10 @@
+<div>
 %if context.get('offset') and offset > 0:
-    <div id="prev-button">
 		%if offset == num_entries:
-			<a href="${pagename}">previous ${num_entries} &lt;&lt;</a><br>
+			&laquo; <a href="${pagename}">previous ${num_entries}</a> &nbsp;
 		%else:
-			<a href="${pagename}?offset=${offset - num_entries}">previous ${num_entries} &lt;&lt;</a><br>
+			&laquo; <a href="${pagename}?offset=${offset - num_entries}">previous ${num_entries}</a> &nbsp;
 		%endif
-    </div>
 %endif
 
 %if context.get('keywordatom', None):
@@ -13,11 +12,9 @@
 %endif
 
 %if context.get('offset_next'):
-    <div id="next-button">
-        <a href="${pagename}?offset=${offset_next}">next ${num_entries} &gt;&gt;</a>
-        &nbsp; &nbsp;
-    </div>
+        <a href="${pagename}?offset=${offset_next}">next ${num_entries} &raquo;</a>
 %endif
+</div>
 
 </div>
 </body>

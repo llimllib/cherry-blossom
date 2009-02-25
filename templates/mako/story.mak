@@ -3,5 +3,5 @@
 ${text}
 <p>
 
-${context.get('keywords', '')}
+<h4><a href="${base_url}${relpath}.html">${tmstr}</a></h4>
 </div>
