@@ -18,7 +18,7 @@
 		<span class="bull">&bull;</span>
     <a href="http://github.com/llimllib">code</a>
 		<span class="bull">&bull;</span>
-    <a href="http://flickr.com/llimllib">photos</a>
+    <a href="http://flickr.com/photos/llimllib">photos</a>
 		<span class="bull">&bull;</span>
     <a href="http://journal.billmill.org">journal</a>
 		<span class="bull">&bull;</span>
