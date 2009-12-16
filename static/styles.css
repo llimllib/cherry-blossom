@@ -18,6 +18,7 @@ h1 {
     font-size: 26px;
     padding-left: 0px;
     margin-left: -1px;
+    line-height: 1.1em;
 }
 
 h1 > a, h1 > a:visited {
@@ -65,9 +66,9 @@ div {
 
 #nav {
     background-color:#f6f6f6;
-    padding-left:10px;
-    margin-top:5px;
-    margin-bottom: 2.8em;
+    padding-left:15px;
+    margin-top:10px;
+    margin-bottom: 1.4em;
     color: #444;
 }
 
@@ -78,4 +79,8 @@ div {
 
 #nav > a, #nav > a:visited, #nav > a:hover, #nav > p {
     color: #888;
+}
+
+#firstp {
+    color: #444;
 }
