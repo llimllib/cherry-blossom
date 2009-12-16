@@ -38,12 +38,31 @@ class BlogRoot(object):
             self.ignore_directories, offset)
 
     @cpy.expose
-    def index(self, offset=0):
+    def index(self):
+        ns = cpy.config.get('/')
+        ns.update({'img': "static/cover_images/wheel.jpg"})
+        return (('head', ns), ('index', ns), ('foot', ns))
+
+    @cpy.expose
+    def essays(self, offset=0):
         try:
             offset = int(offset)
         except ValueError:
             offset = 0
-        return self.render_page(self.files(offset), 'index', offset)
+    
+        ns = cpy.config.get('/')
+
+        datadir = config('datadir')
+        essays = self.files(offset)
+
+        ns['offset'] = offset
+        if len(essays) == ns['num_entries']:
+            ns['offset_next'] = offset + ns['num_entries']
+
+        ns.update({'essays': essays,
+                   'offset': offset,
+                   'pagename': "essays"})
+        return (('head', ns), ('essays', ns), ('foot', ns))
 
     def init_plugins(self, pluginlist):
         """
