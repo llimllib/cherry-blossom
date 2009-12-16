@@ -30,6 +30,10 @@ class Entry(object):
     def meta(self, key, default=''):
         return self.metadata.get(key, default)
 
+    @property
+    def first_para(self):
+        return self.text.split("\n\n")[0]
+
     def parse_meta(self):
         """
         parse metadata inside the text file and store it in the Entry object.
