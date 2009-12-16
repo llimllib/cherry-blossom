@@ -14,14 +14,14 @@
 <body>
 <div id="nav">
     Bill Mill &nbsp; &nbsp;
-		<a href="mailto:bill.mill@gmail.com">email</a>
-		<span class="bull">&bull;</span>
-    <a href="http://github.com/llimllib">code</a>
+    <a href="http://github.com/llimllib">essays</a>
 		<span class="bull">&bull;</span>
     <a href="http://flickr.com/photos/llimllib">photos</a>
 		<span class="bull">&bull;</span>
     <a href="http://journal.billmill.org">journal</a>
 		<span class="bull">&bull;</span>
-		<a href="http://twitter.com">twitter</a>
+	<a href="http://twitter.com/llimllib">twitter</a>
+		<span class="bull">&bull;</span>
+	<a href="mailto:bill.mill@gmail.com">email</a>
 </div>
 <div id="main" style="width: 720px">
