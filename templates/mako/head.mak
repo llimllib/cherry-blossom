@@ -18,7 +18,7 @@
 		<span class="bull">&bull;</span>
     <a href="http://billmill.org/essays">essays</a>
 		<span class="bull">&bull;</span>
-    <a href="http://flickr.com/photos/llimllib">photos</a>
+    <a href="http://billmill.org/Photos">photos</a>
 		<span class="bull">&bull;</span>
 	<a href="http://twitter.com/llimllib">twitter</a>
 		<span class="bull">&bull;</span>
