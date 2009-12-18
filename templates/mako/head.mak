@@ -14,11 +14,11 @@
 <body>
 <div id="nav">
     Bill Mill &nbsp; &nbsp;
-    <a href="http://github.com/llimllib">essays</a>
+    <a href="http://journal.billmill.org">journal</a>
+		<span class="bull">&bull;</span>
+    <a href="http://billmill.org/essays">essays</a>
 		<span class="bull">&bull;</span>
     <a href="http://flickr.com/photos/llimllib">photos</a>
-		<span class="bull">&bull;</span>
-    <a href="http://journal.billmill.org">journal</a>
 		<span class="bull">&bull;</span>
 	<a href="http://twitter.com/llimllib">twitter</a>
 		<span class="bull">&bull;</span>

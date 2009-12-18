@@ -39,7 +39,7 @@ class BlogRoot(object):
 
     @cpy.expose
     def index(self):
-        ns = cpy.config.get('/')
+        ns = cpy.config.get('/').copy()
         ns.update({'img': "static/cover_images/wheel.jpg"})
         return (('head', ns), ('index', ns), ('foot', ns))
 
@@ -50,7 +50,7 @@ class BlogRoot(object):
         except ValueError:
             offset = 0
     
-        ns = cpy.config.get('/')
+        ns = cpy.config.get('/').copy()
 
         datadir = config('datadir')
         essays = self.files(offset)
