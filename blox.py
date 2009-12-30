@@ -40,7 +40,7 @@ class BlogRoot(object):
     @cpy.expose
     def index(self):
         ns = cpy.config.get('/').copy()
-        ns.update({'img': "static/cover_images/wheel.jpg"})
+        ns.update({'img': "static/cover_images/road.jpg"})
         return (('head', ns), ('index', ns), ('foot', ns))
 
     @cpy.expose
