@@ -1,2 +1,3 @@
 *.mak.py
+*.pyc
 blog_entries

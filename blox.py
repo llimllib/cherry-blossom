@@ -32,6 +32,7 @@ class BlogRoot(object):
         self.index() #thus, we don't have to parse the metadata of the front 
                      #page article when the second request comes in
         self.init_plugins(config('plugins'))
+        FileCabinet.get_most_recent(self.datadir) #initialize entries
 
     def files(self, offset):
         return FileCabinet.get_most_recent(self.datadir, self.num_entries, \

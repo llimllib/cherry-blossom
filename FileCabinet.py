@@ -53,6 +53,8 @@ def get_all(datadir):
 
 def get_one(fname, datadir):
     """given a relative path, return the entry or none"""
+    #XXX: right now, this returns the cached copy of the article. Should I pull
+    #     it off the disk every time? renew the entry every X times?
     return ENTRIES.get(fname, None)
 
 def get_entries_by_date(year, month='', day=''):
