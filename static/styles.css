@@ -56,7 +56,7 @@ pre {
     line-height: 110%;
 }
 
-div {
+div#nav, div#main, div#entry {
     margin-bottom:1.4em;
 }
 
