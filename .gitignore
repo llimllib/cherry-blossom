@@ -1,3 +1,5 @@
 *.mak.py
 *.pyc
 blog_entries
+cherryblossom.conf
+site.conf
