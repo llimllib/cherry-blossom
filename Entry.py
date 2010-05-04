@@ -17,7 +17,7 @@ class Entry(object):
         self._text = u'' #will store the text of the file
         self._encoding = config('blog_encoding', 'utf-8')
 
-        #when this is set to 1, the entry will reload from its source file
+        #when this is set to 1, the entry will not reload from its source file
         #this can be used for a cache mechanism, but is currently unused
         self.reload_flag = 0
 
