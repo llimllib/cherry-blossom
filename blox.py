@@ -4,8 +4,6 @@ import cherrypy as cpy
 import FileCabinet
 from utils import config, run_callback
 from mako.template import Template
-#print Template("hello ${data}!").render(data="world")
-
 
 class BlogRoot(object):
     _cp_config = {"tools.staticdir.root": os.path.abspath(os.curdir),
