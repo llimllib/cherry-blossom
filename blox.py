@@ -36,7 +36,6 @@ class BlogRoot(object):
         strings = []
         for t, ns in templates:
             fname = os.path.join(config('template_dir'), t + ".mak")
-            print "rendering fname: %s\nwith ns: %s" % (fname, ns)
             strings.append(Template(filename=fname).render(**ns))
         return "".join(strings)
 

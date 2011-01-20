@@ -1,24 +1,65 @@
+/* 
+
+I wish I could release this as public domain, but I can't, because this CSS is
+based on Mark Pilgrim's "Dive into HTML5" CSS, the license of which
+requires me to insert the following notice:
+
+Copyright (c) 2009, Mark Pilgrim, All rights reserved.
+
+Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:
+
+* Redistributions of source code must retain the above copyright notice,
+  this list of conditions and the following disclaimer.
+* Redistributions in binary form must reproduce the above copyright notice,
+  this list of conditions and the following disclaimer in the documentation
+  and/or other materials provided with the distribution.
+
+ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS 'AS IS'
+ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ POSSIBILITY OF SUCH DAMAGE.
+
+ from http://hg.diveintohtml5.org/hgweb.cgi/file/3fd1efcf5b37/screen.css
+
+Thanks for the great work, and for making it mostly freely available, Mark!
+
+Any changes made by me to Mark's work are released under the WTFPL version 2,
+which you may use without any copyright notice. Please repect his copyright to
+this derived work.
+
+*/
 a:link {color: #000;}
 a:visited {color: #000;}
 
 body {
-    margin-left: 0px;
-    margin-top: 0px;
-    /* font-family: Cambria,Georgia,Times New Roman,Calibri,serif; */
-    font-family:palatino,georgia,verdana,arial,sans-serif;
-    line-height: 1.4em;
-    background-color: #f6f6f6;
-}
-
-#main {
-    margin-left: 15px;
+    color: black;
+    background: white;
+    font: large/1.556 Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+    word-spacing: .1em;
+    max-width: 960px;
+    margin: 0 auto;
+    padding-bottom: 2em;
 }
 
 h1 {
-    font-size: 26px;
+    font-size: 266.7%;
+    line-height: 1.1;
+    text-align: center;
+    width: 100%;
+    margin: 1.49em 0;
+    text-transform: uppercase;
+    /* font-size: 26px;
     padding-left: 0px;
     margin-left: -1px;
-    line-height: 1.1em;
+    line-height: 1.1em; */
 }
 
 h1 > a, h1 > a:visited {
@@ -27,12 +68,23 @@ h1 > a, h1 > a:visited {
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 150%;
+    line-height: 1.3125;
+    margin: 1.167em 0;
+    text-align: left;
+    clear: both;
+    /* font-size: 18px; */
+}
+
+h1, h2, h4 {
+    font-family: Palatino,'Palatino Linotype','Book Antiqua',Georgia,'Times New Roman',serif;
+    font-weight: normal;
+    text-shadow: 0 0 1px #667;
 }
 
 h3 {
-    font-size: 18px;
-    color: #888;
+    font-size: 125%;
+    /* color: #888; */
 }
 
 h4 {
@@ -52,7 +104,7 @@ pre {
     padding-top: 5px;
     padding-left: 10px;
     padding-bottom: 5px;
-    background-color: #eee;
+    background-color: #efefef;
     line-height: 110%;
 }
 
@@ -65,11 +117,11 @@ div#nav, div#main, div#entry {
 }
 
 #nav {
-    background-color:#f6f6f6;
-    padding-left:15px;
+    /*background-color:#f6f6f6;
+    padding-left:15px;*/
     margin-top:10px;
     margin-bottom: 1.4em;
-    color: #444;
+    /* color: #444; */
 }
 
 .bull {
@@ -84,3 +136,5 @@ div#nav, div#main, div#entry {
 #firstp {
     color: #444;
 }
+
+img {border: none}
