@@ -2,12 +2,13 @@
 import datetime, time, os, sys, traceback
 import cherrypy as cpy
 import FileCabinet
-from buffet import BuffetTool
 from utils import config, run_callback
+from mako.template import Template
+#print Template("hello ${data}!").render(data="world")
+
 
 class BlogRoot(object):
-    _cp_config = {"tools.buffet.on": True,
-                  "tools.staticdir.root": os.path.abspath(os.curdir),
+    _cp_config = {"tools.staticdir.root": os.path.abspath(os.curdir),
                   "tools.encode.on": True,
                   "tools.encode.encoding": config("blog_encoding", "utf-8")}
 
@@ -16,9 +17,6 @@ class BlogRoot(object):
             ["%Y %b", "%Y %m", "%Y %b", "%Y %B", "%m %d", "%b %d", "%B %d"],
             ["%Y %m %d", "%Y %b %d", "%Y %B %d"]]
         self.plugins = [] #contains all loaded plugins
-
-        #turn on the templating engine
-        cpy.tools.buffet = BuffetTool(config("template_engine"))
 
         #set the output encoding
         self._cp_config["cpy.tools.encode.encoding"] = "utf-8"
@@ -34,6 +32,14 @@ class BlogRoot(object):
         self.init_plugins(config('plugins'))
         FileCabinet.get_most_recent(self.datadir) #initialize entries
 
+    def render(self, templates):
+        strings = []
+        for t, ns in templates:
+            fname = os.path.join(config('template_dir'), t + ".mak")
+            print "rendering fname: %s\nwith ns: %s" % (fname, ns)
+            strings.append(Template(filename=fname).render(**ns))
+        return "".join(strings)
+
     def files(self, offset):
         return FileCabinet.get_most_recent(self.datadir, self.num_entries, \
             self.ignore_directories, offset)
@@ -41,7 +47,7 @@ class BlogRoot(object):
     @cpy.expose
     def index(self):
         ns = cpy.config.get('/').copy()
-        return (('head', ns), ('index', ns), ('foot', ns))
+        return self.render((('head', ns), ('index', ns), ('foot', ns)))
 
     @cpy.expose
     def essays(self, offset=0):
@@ -62,7 +68,7 @@ class BlogRoot(object):
         ns.update({'essays': essays,
                    'offset': offset,
                    'pagename': "essays"})
-        return (('head', ns), ('essays', ns), ('foot', ns))
+        return self.render((('head', ns), ('essays', ns), ('foot', ns)))
 
     def init_plugins(self, pluginlist):
         """
@@ -101,7 +107,7 @@ class BlogRoot(object):
         cpy.response.status = status
         ns = cpy.config.get('/')
         ns.update({'error': error})
-        return (('head', ns), ('error', ns), ('foot', ns))
+        return self.render((('head', ns), ('error', ns), ('foot', ns)))
 
     def render_page(self, entries, pagename='', offset=0):
         """renders a collection of entries into a web page"""
@@ -159,7 +165,7 @@ class BlogRoot(object):
         #cb_page_end is a plugin's chance to clean up data
         run_callback(self.plugins, 'cb_page_end')
 
-        return page
+        return self.render(page)
 
     def stripall(self, str_, *strippers):
         """return a string stripped of all extensions in strippers"""
