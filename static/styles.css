@@ -95,7 +95,8 @@ h4 {
 blockquote {
     padding-top: 5px;
     padding-left: 10px;
-    background-color: #eee;
+    background-color: white;
+    border-left: 2px solid #ccc;
 }
 
 pre {
@@ -104,8 +105,9 @@ pre {
     padding-top: 5px;
     padding-left: 10px;
     padding-bottom: 5px;
-    background-color: #efefef;
+    background-color: white;
     line-height: 110%;
+    border-left: 2px solid #ccc;
 }
 
 div#nav, div#main, div#entry {
