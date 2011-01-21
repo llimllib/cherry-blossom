@@ -44,7 +44,7 @@ class BlogRoot(object):
     @cpy.expose
     def index(self):
         ns = cpy.config.get('/').copy()
-        return self.render((('head', ns), ('index', ns), ('foot', ns)))
+        return self.render((('index', ns), ('foot', ns)))
 
     @cpy.expose
     def essays(self, offset=0):
