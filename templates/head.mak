@@ -1,4 +1,4 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML>
 <html><head>
 <link rel="alternate" type="application/atom+xml" title="billmill.org Atom Feed" 
 	href="http://billmill.org/Atom/" />
@@ -18,10 +18,10 @@
 		<span class="bull">&bull;</span>
     <a href="http://billmill.org/essays">essays</a>
 		<span class="bull">&bull;</span>
-    <a href="http://billmill.org/Photos/">photos</a>
+    <a href="http://www.flickr.com/photos/llimllib/">photos</a>
 		<span class="bull">&bull;</span>
 	<a href="http://twitter.com/llimllib">twitter</a>
 		<span class="bull">&bull;</span>
 	<a href="mailto:bill.mill@gmail.com">email</a>
 </div>
-<div id="main" style="width: 720px">
+<div id="main" style="width: 960px">
