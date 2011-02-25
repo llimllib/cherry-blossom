@@ -126,7 +126,7 @@ or read my source code and be my nerd friend at
         <p>Tree drawing algorithms actually have an interesting, long history, and are fun to implement.
     </div>
     <div class="left-img">
-        <a href="http://billmill.org/the_histogram.html"><img src="static/trees_small.jpg"></a>
+        <a href="http://llimllib.github.com/pymag-trees/"><img src="static/trees_small.jpg"></a>
     </div>
 </div>
 
