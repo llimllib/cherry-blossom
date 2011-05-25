@@ -12,7 +12,7 @@
 %endif
 
 %if context.get('offset_next'):
-        <a href="${pagename}?offset=${offset_next}">next ${num_entries} &raquo;</a>
+        <a href="/${pagename}?offset=${offset_next}">next ${num_entries} &raquo;</a>
 %endif
 </div>
 
