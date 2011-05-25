@@ -15,7 +15,7 @@
     h1 { font-size: 18px; margin: 0; padding: 0; font-weight:normal; text-align: center; width: auto;}
     h1 > a { / *text-decoration: underline;*/ }
 
-    .right-block { width: 475px; overflow:auto; max-width:475px; float:right; }
+    .right-block { width: 475px; overflow:auto; max-width:475px; float:right; clear:both;}
     .right-text { max-width: 315px; float: left; text-align: left; margin-left: 20px; }
     .right-img { float:right; max-width: 120px; height: 120px; overflow: hidden;}
 
@@ -56,11 +56,11 @@ or read my source code and be my nerd friend at
 
 <div class="left-block">
     <div class="left-text">
-        <h1><a href="http://billmill.org/permvis.html">Visualizing Permutations</a></h1>
-        <p>A visual demonstration of how a few permutation algorithms work
+        <h1><a href="http://llimllib.github.com/bloomfilter-tutorial/">Bloom filters by example</a></h1>
+        <p>A demonstration and explanation of how to use Bloom filters
     </div>
     <div class="left-img">
-        <a href="http://billmill.org/permvis.html"><img src="static/perms_small.png"></a>
+        <a href="http://llimllib.github.com/bloomfilter-tutorial/"><img src="static/bloomfilter.png"></a>
     </div>
 </div>
 
@@ -100,11 +100,11 @@ or read my source code and be my nerd friend at
 
 <div class="left-block">
     <div class="left-text">
-        <h1><a href="http://billmill.org/ncaa_randomizer_2010.html">NCAA Bracket Randomizer</a></h1>
-        <p>Generate a random but reasonable NCAA bracket for your office pool
+        <h1><a href="http://billmill.org/permvis.html">Visualizing Permutations</a></h1>
+        <p>A visual demonstration of how a few permutation algorithms work
     </div>
     <div class="left-img">
-        <a href="http://billmill.org/ncaa_randomizer_2010.html"><img src="static/brackets_small.jpg"></a>
+        <a href="http://billmill.org/permvis.html"><img src="static/perms_small.png"></a>
     </div>
 </div>
 
@@ -117,6 +117,28 @@ or read my source code and be my nerd friend at
     </div>
     <div class="right-img">
         <a href="http://www.youtube.com/llimllib#g/c/D397DB24E59FACC0"><img src="static/population_small.jpg"></a>
+    </div>
+</div>
+
+<div class="left-block">
+    <div class="left-text">
+        <h1><a href="http://billmill.org/ncaa_randomizer_2010.html">NCAA Bracket Randomizer</a></h1>
+        <p>Generate a random but reasonable NCAA bracket for your office pool
+    </div>
+    <div class="left-img">
+        <a href="http://billmill.org/ncaa_randomizer_2010.html"><img src="static/brackets_small.jpg"></a>
+    </div>
+</div>
+
+<p>
+
+<div class="right-block">
+    <div class="right-text">
+        <h1><a href="http://billmill.org/static/viewji/viewji.html">Viewji</a></h1>
+        <p><a href="http://billmill.org/static/viewji/viewji.html">Viewji</a> is a clone of most of <a href="http://nodebox.net/code/index.php/Home">NodeBox</a> in pure javascript.
+    </div>
+    <div class="right-img">
+        <a href="http://billmill.org/static/viewji/viewji.html"><img src="static/viewji.jpg"></a>
     </div>
 </div>
 
