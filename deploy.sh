@@ -10,4 +10,6 @@ rsync -avuz -e ssh --safe-links \
 #and finally the static stuff
 rsync -avuz -e ssh --safe-links \
 --exclude ".git" \
-ssh static/ llimllib@billmill.org:~/static
+static/ llimllib@billmill.org:~/static
+
+ssh -f llimllib@billmill.org '~/restart_blog.sh'
